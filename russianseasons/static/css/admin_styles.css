@@ -1,0 +1,13 @@
+
+.del_but{
+	display: block;
+	margin-left:20%;
+}
+
+.va-m{
+	vertical-align:middle;
+}
+
+.do-disp{
+	display: none !important;
+}

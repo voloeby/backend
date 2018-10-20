@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<section class="s-content">
+
+		<div class="row narrow">
+			<div class="col-full s-content__header" data-aos="fade-up">
+				<h1>Заголовок</h1>
+				<p class="lead">Какое то описание.</p>
+			</div>
+		</div>
+
+		<div class="row masonry-wrap">
+			<div class="masonry">
+
+				<div class="grid-sizer"></div>
+				{% for item in items %}
+					{% if item.show %}
+						<article class="masonry__brick entry format-standard" data-aos="fade-up">
+
+							<div class="entry__thumb">
+								<a href="{% url 'item_url' item.id %}" class="entry__thumb-link">
+									<img src="{{item.image.url}}"
+										  alt="{{item.name}}">
+								</a>
+							</div>
+
+							<div class="entry__text">
+								<div class="entry__header">
+									<h1 class="entry__title"><a href="{% url 'item_url' item.id %}">{{item.name}}</a></h1>
+
+								</div>
+								<div class="entry__meta">
+									<span class="entry__meta-links">
+										<a href="{% url 'item_url' item.id %}">{{item.price}}</a>
+									</span>
+								</div>
+							</div>
+
+						</article>
+					{% endif %}
+				{% endfor %}
+			</div> <!-- end masonry -->
+		</div> <!-- end masonry-wrap -->
+	</section>
+{% endblock %}

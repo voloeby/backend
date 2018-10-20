@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<section class="s-content s-content--narrow">
+
+		<div class="row">
+
+			<div class="s-content__header col-full">
+				<h1 class="s-content__header-title">
+					Напишите нам.
+				</h1>
+			</div> <!-- end s-content__header -->
+			<div class="col-full s-content__main">
+
+				<p class="lead">Тоже можно что нибудь написать</p>
+
+				<div class="row">
+					<div class="col-six tab-full">
+						<h3>Адреса</h3>
+
+						<p>
+						1600 Amphitheatre Parkway<br>
+						Mountain View, CA<br>
+						94043 US
+						</p>
+
+					</div>
+
+					<div class="col-six tab-full">
+						<h3>Контакты</h3>
+
+						<p>contact@philosophywebsite.com<br>
+						info@philosophywebsite.com <br>
+						Phone: (+1) 123 456
+						</p>
+
+					</div>
+				</div> <!-- end row -->
+
+				<h3>Say Hello.</h3>
+
+				<form name="cForm" id="cForm" method="post" action="">
+					<fieldset>
+
+						<div class="form-field">
+							<input name="cName" type="text" id="cName" class="full-width" placeholder="Ваше имя" value="">
+						</div>
+
+						<div class="form-field">
+							<input name="cEmail" type="text" id="cEmail" class="full-width" placeholder="Email" value="">
+						</div>
+
+						<div class="message form-field">
+						<textarea name="cMessage" id="cMessage" class="full-width" placeholder="Сообщение" ></textarea>
+						</div>
+
+						<button type="submit" class="submit btn btn--primary full-width">Отправить</button>
+
+					</fieldset>
+				</form> <!-- end form -->
+
+
+			</div> <!-- end s-content__main -->
+
+		</div> <!-- end row -->
+
+	</section> <!-- s-content -->
+
+{% endblock %}

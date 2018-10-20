@@ -1,0 +1,6 @@
+.DS_Store
+db.sqlite3
+voloeby/local.py
+media
+russianseasons/static2
+russianseasons/templates2
