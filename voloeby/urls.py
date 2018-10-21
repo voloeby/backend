@@ -23,8 +23,9 @@ from django.conf import settings
 urlpatterns = [
 	# path('', include('alfa.urls')),
 	# path('i18n/', include('django.conf.urls.i18n')),
-	# path('admin/', admin.site.urls),
+	path('djadmin/', admin.site.urls),
     # url('^admin/', include('russianseasons.admin.urls')),
+	path('ckeditor/', include('ckeditor_uploader.urls')),
 	path('', include('russianseasons.urls')),
 	# path('', application.urls),
 ]

@@ -5,6 +5,7 @@ from django.views.generic import RedirectView
 
 # from russianseasons import views
 from russianseasons.views import shop, blog, views
+from russianseasons.decorators import *
 
 urlpatterns = [
 	url('^admin/', include('russianseasons.admin.urls')),

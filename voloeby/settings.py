@@ -34,6 +34,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 	'django.contrib.sites',
 	'django.contrib.flatpages',
+	'ckeditor',
+	'ckeditor_uploader',
 	# 'alfa',
 	'russianseasons',
 	# 'widget_tweaks',
@@ -161,8 +163,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
+CKEDITOR_UPLOAD_PATH = 'ckeditor/'
+CKEDITOR_IMAGE_BACKEND = 'pillow'
+
+
 PROJECT_PATH = os.path.abspath(os.path.dirname(__name__))+'/'
 
+# STATIC_ROOT = 'static/'
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
@@ -171,3 +178,36 @@ STATICFILES_DIRS = [
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+
+CKEDITOR_CONFIGS = {
+    'default': {
+		'uiColor': '#ffffff',
+		'toolbar': 'custom',
+		'toolbar_news':[
+			[ 'Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates' ],
+			[ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ],
+			[ 'Find', 'Replace', '-', 'SelectAll', '-', 'Scayt' ],
+			[ 'Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField' ],
+			'/',
+			[ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'CopyFormatting', 'RemoveFormat' ],
+			[ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl', 'Language' ],
+			[ 'Link', 'Unlink', 'Anchor' ],
+			[ 'Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe' ],
+			'/',
+			[ 'Styles', 'Format', 'Font', 'FontSize' ],
+			[ 'TextColor', 'BGColor' ],
+			[ 'Maximize', 'ShowBlocks' ],
+			[ 'About' ],
+		],
+		'format_h1': { 'element': 'p', 'attributes': { 'class': 'h1' } },
+		'format_h2': { 'element': 'p', 'attributes': { 'class': 'h2' } },
+		'format_h3': { 'element': 'p', 'attributes': { 'class': 'h3' } },
+		'format_h4': { 'element': 'p', 'attributes': { 'class': 'h4' } },
+		'format_h5': { 'element': 'p', 'attributes': { 'class': 'h5' } },
+		'format_h6': { 'element': 'p', 'attributes': { 'class': 'h6' } },
+		'format_a': { 'element': 'a', 'attributes': { 'class': 'no-underline' } },
+		'width': '99.9vw',
+		'height': '1024',
+    },
+}

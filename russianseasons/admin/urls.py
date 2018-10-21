@@ -17,4 +17,7 @@ urlpatterns = [
 	path('shop/sizes/new', views.NewSize.as_view(), name='new_size_url'),
 	path('shop/item/edit/<int:id>', views.EditItem.as_view(), name='edit_item_url'),
 	path('shop/item/delete/<int:id>', views.DelItem.as_view(), name='delete_item_url'),
+	path('blog', views.BlogView.as_view(), name='admin_blog_url'),
+	path('blog/posts/new', views.NewBlogPostView.as_view(), name='new_blog_post_url'),
+	path('blog/posts/edit/<int:id>', views.NewBlogPostView.as_view(), name='edit_blog_post_url'),
 ]

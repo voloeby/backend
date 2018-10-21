@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class Category(models.Model):
@@ -52,3 +52,12 @@ class Order(models.Model):
 class MyUser(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
 	cart = models.ManyToManyField(Item)
+
+
+class BlogPost(models.Model):
+	title = models.CharField(max_length = 10000, default = '')
+	content = RichTextUploadingField(blank=True, null=True)
+	image = models.ImageField(upload_to='img/blog/')
+	datetime = models.DateTimeField(auto_now_add=True)
+	class Meta:
+		ordering = ['-datetime']

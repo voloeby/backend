@@ -15,8 +15,10 @@ colors = ['black', 'grey', 'white']
 class BaseAdminView(View):
 	admin = True
 	context = {}
-	# def as_view(self):
-	# 	super(BaseAdminView, self).as_view()
+	# def as_view(self, *args, **kwargs):
+	# 	# super(CheckboxWidget, self).render(*args, **kwargs)
+	# 	page = super(BaseAdminView, self).as_view( *args, **kwargs)
+	# 	return page
 
 def admin_page(request):
 	template_name = 'admin/admin_page.html'
@@ -157,3 +159,40 @@ class NewSize(BaseAdminView):
 		else:
 			HttpResponseRedirect(reverse('new_size_url'))
 		return HttpResponseRedirect(reverse('admin_shop_url'))
+
+class BlogView(BaseAdminView):
+	template_name = 'admin/blog_page.html'
+	def get(self, request):
+		context={}
+		context['posts'] = BlogPost.objects.all()
+		return render(request, self.template_name, context)
+
+class NewBlogPostView(BaseAdminView):
+	template_name = 'admin/blog_post_page.html'
+	def get(self, request, id=None):
+		context={}
+		if id == None:
+			obj = None
+			context['header'] = 'Добавить пост'
+		else:
+			obj = get_object_or_404(BlogPost, id=id)
+			context['header'] = 'Изменить пост'
+		context['form'] = BlogPostForm(instance=obj)
+		return render(request, self.template_name, context)
+	def post(self, request, id=None):
+		if id == None:
+			obj = None
+		else:
+			obj = get_object_or_404(BlogPost, id=id)
+		form = BlogPostForm(request.POST, request.FILES, instance=obj)
+		if form.is_valid():
+			form.save()
+			return HttpResponseRedirect(reverse('admin_blog_url'))
+		else:
+			context['header'] = 'Добавить пост'
+			context['form'] = form
+			return render(request, self.template_name, context)
+	def delete(self, request, id):
+		obj = get_object_or_404(BlogPost, id=id)
+		obj.delete()
+		return HttpResponse('ok')
