@@ -196,3 +196,11 @@ class NewBlogPostView(BaseAdminView):
 		obj = get_object_or_404(BlogPost, id=id)
 		obj.delete()
 		return HttpResponse('ok')
+
+
+class MessagesView(BaseAdminView):
+	template_name = 'admin/messages_page.html'
+	def get(self, request):
+		context = {}
+		context['messages'] = Message.objects.all()
+		return render(request, self.template_name, context)

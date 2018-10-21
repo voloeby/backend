@@ -40,6 +40,7 @@
 				<h3>Напишите нам</h3>
 
 				<form name="cForm" id="cForm" method="post" action="{{request.path}}">
+					{% csrf_token %}
 					<fieldset>
 
 						<div class="form-field">
