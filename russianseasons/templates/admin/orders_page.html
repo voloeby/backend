@@ -1,0 +1,75 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+
+{% block content %}
+	<div class="container">
+		<h1>Заказы</h1>
+		<ul class="list-group list-group-flush mt-2">
+			<li class="list-group-item" style="background-color:#efefef">
+				<div class="row">
+					<div class="col-1">
+						<span class="small" style="display:block;margin:auto">
+							Дата
+						</span>
+					</div>
+					<div class="col-3">
+						<span class="small" style="display:block;margin:auto">
+							Содержание заказа
+						</span>
+					</div>
+					<div class="col-1">
+						<span class="small" style="display:block;margin:auto">
+							Email
+						</span>
+					</div>
+					<div class="col-1">
+						<span class="small" style="display:block;margin:auto">
+							Город
+						</span>
+					</div>
+					<div class="col">
+						<span class="small" style="display:block;margin:auto">
+
+						</span>
+					</div>
+				</div>
+			</li>
+			{% for order in orders %}
+				<li class="list-group-item" id="{{item.id}}">
+					<div class="row">
+						<div class="col-1">
+							{{order.datetime|date:'d.m.Y'}}
+							<br>
+							{{order.datetime|time:'H:i'}}
+						</div>
+						<div class="col-3">
+							{% for item in order.items.all %}
+								<div class="row">
+									<div class="col">
+										{{item.prototype.name}}
+									</div>
+									<div class="col-2">
+										{{item.color}}
+									</div>
+									<div class="col-2">
+										{{item.size}}
+									</div>
+								</div>
+							{% endfor %}
+						</div>
+						<div class="col-1">
+							{{order.email}}
+						</div>
+						<div class="col-1">
+							{{order.city}}
+						</div>
+						<div class="col">
+
+						</div>
+					</div>
+
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+{% endblock %}

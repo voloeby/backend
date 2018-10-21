@@ -48,7 +48,7 @@
 							<input type="checkbox" id='input_{{item.id}}' value="" style="display:block;margin:auto" class="mt-2" onclick="javascript:upd_show({{item.id}})" {% if item.show %}checked{% endif %}>
 						</div>
 						<div class="col-1">
-							<a href="{% url 'edit_item_url' item.id %}" class="">
+							<a href="{% url 'edit_item_url' item.id %}" class="" id='edit_link_{{item.id}}'>
 								<button type="button" name="button" class="btn btn-success">Edit</button>
 							</a>
 						</div>

@@ -13,14 +13,14 @@
 
 		<div class="s-content__media col-full">
 			<div class="s-content__post-thumb">
-				<img src="{{item.image.url}}">
+				<img src="{{item.image.url}}" class="block-center">
 			</div>
 		</div> <!-- end s-content__media -->
 		<div class="col-six">
 			<h3>Размер</h3>
 			<ul class="stats-tabs">
 				{% for size in item.sizes.all %}
-					<li><a href="#">{{size.name.upper}}<em> </em></a></li>
+					<li id='size_{{size.name}}'><a href="javascript:chose_size('{{size.name}}')">{{size.name.upper}}<em> </em></a></li>
 				{% endfor %}
 			</ul>
 		</div>
@@ -28,21 +28,49 @@
 			<h3>Цвет</h3>
 			<ul class="stats-tabs">
 				{% for color in item.colors.all %}
-					<li><a href="#">{{color.name}}<em> </em></a></li>
+					<li id='color_{{color.name}}'><a href="javascript:chose_color('{{color.name}}')">{{color.name}}<em> </em></a></li>
 				{% endfor %}
 			</ul>
 		</div>
 		<div class="col-full">
-			Цена: <b class="h2">{{item.price}}</b>
+			Цена: <b class="h2">{{item.price}}</b> руб.
 		</div>
 
 		<div class="col-full s-content__main">
 			<p>{{item.description}}</p>
 		</div>
-		<a class="btn btn--primary full-width" href="#0">Оформить предзаказ</a>
+		<div class="full-width">
+			<div>
+                <label for="sampleInput">Email</label>
+                <input class="full-width" type="email" placeholder="your@email.ru" id="email_input">
+            </div>
+			<div>
+                <label for="sampleInput">Куда доставить</label>
+                <input class="full-width" type="email" placeholder="Санкт-Петербург" id="city_input">
+            </div>
+			<div class="col-full" id='error_box' style='display:none'>
+				<div class="alert-box alert-box--error hideit">
+		            <p id='error_message'>asd</p>
+		            <i class="fa fa-times alert-box__close"></i>
+		        </div> <!-- end error -->
+			</div>
+			<div class="col-full" id='success_box' style="display:none">
+				<div class="alert-box alert-box--success hideit">
+					<p id='success_message'></p>
+        			<i class="fa fa-times alert-box__close"></i>
+				</div>
+
+			</div>
+
+
+			<a class="btn btn--primary full-width" href='javascript:new_pre_order()' id='button'>Оформить предзаказ</a>
+
+		</div>
+
+
 	</article>
 
 
 </section> <!-- s-content -->
-
+<div id='csrf_token' style='display:none'>{{csrf_token}}</div>
 {% endblock %}

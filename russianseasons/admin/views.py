@@ -115,6 +115,12 @@ class ShopPage(BaseAdminView):
 		context['items'] = ItemPrototype.objects.all()
 		return render(request, template_name, context)
 
+class OrdersPage(BaseAdminView):
+	template_name = 'admin/orders_page.html'
+	def get(self, request):
+		context = {}
+		context['orders'] = Order.objects.all()
+		return render(request, self.template_name, context)
 
 class NewColor(BaseAdminView):
 	template_name = 'admin/color_page.html'
