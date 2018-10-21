@@ -22,6 +22,7 @@ class CheckboxWidget(forms.CheckboxSelectMultiple):
 		ul.append(soup.new_tag('a'))
 		ul.a['class'] = 'btn btn-primary mt-3'
 		ul.a['href'] = reverse(self.url_name)
+
 		ul.a.append(self.button_text)
 		return soup.__str__()
 
@@ -34,8 +35,8 @@ class SizeCheckboxWidget(CheckboxWidget):
 	url_name = 'new_size_url'
 
 class LoginForm(forms.Form):
-	username = UsernameField(widget=forms.TextInput(attrs={'autofocus': True, 'class': 'form-control rounded-0'}))
-	password = forms.CharField(label=("Password"), strip=False, widget=forms.PasswordInput(attrs={'class': 'form-control rounded-0', 'type': 'password'}))
+	username = UsernameField(widget=forms.TextInput(attrs={'autofocus': True, 'class': 'form-control'}))
+	password = forms.CharField(label=("Password"), strip=False, widget=forms.PasswordInput(attrs={'class': 'form-control', 'type': 'password'}))
 
 class ItemForm(forms.ModelForm):
 	colors = forms.ModelMultipleChoiceField(queryset=Color.objects.all(), widget=ColorCheckboxWidget(), label='Цвета:')
@@ -44,7 +45,7 @@ class ItemForm(forms.ModelForm):
 		model = ItemPrototype
 		fields = ['name', 'description', 'price', 'colors', 'sizes', 'image']
 		widgets = {
-			'name': forms.widgets.TextInput(attrs={'class': 'form-control',}),
+			'name': forms.widgets.TextInput(attrs={'class': 'form-control'}),
 			'description': forms.widgets.Textarea(attrs={'class': 'form-control',}),
 			'price': forms.widgets.NumberInput(attrs={'class': 'form-control',})
 			# 'colors': forms.widgets.CheckboxInput(attrs={'class': 'form-control',}),
@@ -56,3 +57,6 @@ class ItemForm(forms.ModelForm):
 			'colors': 'Цвета:',
 			'price': 'Цена:',
 		}
+
+class TextInputForm(forms.Form):
+	text = forms.CharField(widget=forms.TextInput(attrs={'autofocus': True, 'class': 'form-control'}), label='')

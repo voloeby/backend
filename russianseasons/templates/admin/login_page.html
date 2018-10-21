@@ -1,14 +1,25 @@
-{% extends 'admin/base.html' %}
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>voloeby</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="/static/bootstrap-4/css/bootstrap.min.css">
 
-{% block content %}
-	<div class="container">
+</head>
+<body class="b-0 p-0" style="min-width:430px;">
+	<div class="" style="min-height:87.5vh">
 		<div class="container">
-			<h2>Вход</h2>
-			<form class="" action="{% url 'login_url' %}" method="post">
-				{% csrf_token %}
-				{{login_form.as_p}}
-				<button type="submit" name="button" class="btn btn-primary">Войти</button>
-			</form>
+			<div class="container">
+				<h2>Вход</h2>
+				<form class="" action="{% url 'login_url' %}" method="post">
+					{% csrf_token %}
+					{{login_form.as_p}}
+					<button type="submit" name="button" class="btn btn-primary">Войти</button>
+				</form>
+			</div>
 		</div>
+		<br>
 	</div>
-{% endblock %}
+</body>
+</html>

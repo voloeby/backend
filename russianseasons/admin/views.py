@@ -123,13 +123,37 @@ class OrdersPage(BaseAdminView):
 		return render(request, self.template_name, context)
 
 class NewColor(BaseAdminView):
-	template_name = 'admin/color_page.html'
+	template_name = 'admin/text_input_page.html'
 	def get(self, request):
 		context = {}
+		context['form'] = TextInputForm()
+		context['header'] = 'Добавить цвет'
+		context['back_url'] = reverse('admin_shop_url')
 		return render(request, self.template_name, context)
+	def post(self, request):
+		form = TextInputForm(request.POST)
+		if form.is_valid():
+			color = Color()
+			color.name = form.cleaned_data['text']
+			color.save()
+		else:
+			HttpResponseRedirect(reverse('new_color_url'))
+		return HttpResponseRedirect(reverse('admin_shop_url'))
 
 class NewSize(BaseAdminView):
-	template_name = 'admin/size_page.html'
+	template_name = 'admin/text_input_page.html'
 	def get(self, request):
 		context = {}
+		context['form'] = TextInputForm()
+		context['header'] = 'Добавить размер'
+		context['back_url'] = reverse('admin_shop_url')
 		return render(request, self.template_name, context)
+	def post(self, request):
+		form = TextInputForm(request.POST)
+		if form.is_valid():
+			size = Size()
+			size.name = form.cleaned_data['text']
+			size.save()
+		else:
+			HttpResponseRedirect(reverse('new_size_url'))
+		return HttpResponseRedirect(reverse('admin_shop_url'))
