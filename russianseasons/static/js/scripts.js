@@ -78,3 +78,7 @@ function new_pre_order(){
 	}});
 
 }
+
+function subscribe_to_news(){
+	console.log('fff');
+}

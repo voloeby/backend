@@ -28,3 +28,7 @@ def cart_page(request):
 
 class BaseView(View):
 	context = {}
+
+class SubscribeToEmail(View):
+	def post(self, request):
+		print(request)

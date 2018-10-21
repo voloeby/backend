@@ -6,10 +6,9 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>Philosophy</title>
-    <meta name="description" content="">
+    <title>Русские сезоны | {% block title %}{% endblock %}</title>
+    <meta name="description" content="{% block description %}{% endblock %}">
     <meta name="author" content="">
-
     <!-- mobile specific metas
     ================================================== -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -30,7 +29,9 @@
     ================================================== -->
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+	{% block head %}
 
+	{% endblock %}
 </head>
 
 <body id="top">
@@ -187,14 +188,11 @@
                     <p>Какой то текст.</p>
 
                     <div class="subscribe-form">
-                        <form id="mc-form" class="group" novalidate="true">
+                        <form id="mc-form" class="group" novalidate="true" action="">
 
                             <input type="email" value="" name="EMAIL" class="email" id="mc-email" placeholder="Email" required="">
 
-                            <input type="submit" name="subscribe" value="Подписаться">
-
-                            <label for="mc-email" class="subscribe-message"></label>
-
+                            <input type="submit" name="subscribe" value="Подписаться" onclick="javascript:subscribe_to_news()">
                         </form>
                     </div>
 

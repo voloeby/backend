@@ -7,7 +7,7 @@
 
 			<div class="s-content__header col-full">
 				<h1 class="s-content__header-title">
-					Напишите нам.
+					Контакты.
 				</h1>
 			</div> <!-- end s-content__header -->
 			<div class="col-full s-content__main">
@@ -37,27 +37,27 @@
 					</div>
 				</div> <!-- end row -->
 
-				<h3>Say Hello.</h3>
+				<h3>Напишите нам</h3>
 
-				<form name="cForm" id="cForm" method="post" action="">
+				<form name="cForm" id="cForm" method="post" action="{{request.path}}">
 					<fieldset>
 
 						<div class="form-field">
-							<input name="cName" type="text" id="cName" class="full-width" placeholder="Ваше имя" value="">
+							<input name="cName" type="text" id="cName" class="full-width" placeholder="Ваше имя" value="" required>
 						</div>
 
 						<div class="form-field">
-							<input name="cEmail" type="text" id="cEmail" class="full-width" placeholder="Email" value="">
+							<input name="cEmail" type="text" id="cEmail" class="full-width" placeholder="Email" value="" required>
 						</div>
 
 						<div class="message form-field">
-						<textarea name="cMessage" id="cMessage" class="full-width" placeholder="Сообщение" ></textarea>
+						<textarea name="cMessage" id="cMessage" class="full-width" placeholder="Сообщение" required></textarea>
 						</div>
 
 						<button type="submit" class="submit btn btn--primary full-width">Отправить</button>
 
 					</fieldset>
-				</form> <!-- end form -->
+				</form>
 
 
 			</div> <!-- end s-content__main -->
