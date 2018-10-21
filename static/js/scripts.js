@@ -80,5 +80,12 @@ function new_pre_order(){
 }
 
 function subscribe_to_news(){
-	console.log('fff');
+	var csrf = $('#csrf_token').text();
+	var email = $('#mc-email').val();
+	if(email=='') return;
+	console.log(email);
+	$.ajax({url:'subscribe_to_email', method:'post', headers:{ 'X-CSRFToken':csrf}, data:{'email':email}, success: function(res){
+
+		$('.subscribe-form').html('Вы успешно подписались на новости.');
+	}});
 }

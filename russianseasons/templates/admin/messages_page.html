@@ -9,6 +9,9 @@
 			<li class="list-group-item" style="background-color:#efefef">
 				<div class="row">
 					<div class="col-2">
+						<small>Дата</small>
+					</div>
+					<div class="col-2">
 						<small>Имя</small>
 					</div>
 					<div class="col-2">
@@ -23,7 +26,12 @@
 				<li class="list-group-item" id="{{item.id}}">
 					<div class="row">
 						<div class="col-2">
-							<h3>{{message.name}}</h3>
+							{{message.datetime|date:'d.m.Y'}}
+							<br>
+							{{message.datetime|time:'H:i'}}
+						</div>
+						<div class="col-2">
+							{{message.name}}
 						</div>
 						<div class="col-2">
 							{{message.email}}

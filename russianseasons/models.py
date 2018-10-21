@@ -69,3 +69,16 @@ class Message(models.Model):
 	datetime = models.DateTimeField(auto_now_add=True)
 	class Meta:
 		ordering = ['-datetime']
+
+class Subscriber(models.Model):
+	datetime = models.DateTimeField(auto_now_add=True)
+	email = models.CharField(max_length = 10000, default = '')
+
+class Storage(models.Model):
+	key = models.CharField(max_length=100, default='')
+	value = models.TextField()
+	def get(key):
+		try:
+			return Storage.objects.get(key=key)
+		except:
+			return None

@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block title %}
+	{{item.name}}
+{% endblock %}
+
 {% block content %}
 <section class="s-content s-content--narrow s-content--no-padding-bottom">
 
@@ -72,5 +76,5 @@
 
 
 </section> <!-- s-content -->
-<div id='csrf_token' style='display:none'>{{csrf_token}}</div>
+
 {% endblock %}

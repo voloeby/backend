@@ -204,3 +204,10 @@ class MessagesView(BaseAdminView):
 		context = {}
 		context['messages'] = Message.objects.all()
 		return render(request, self.template_name, context)
+
+class SubscribersView(BaseAdminView):
+	template_name = 'admin/subscribers_page.html'
+	def get(self, request):
+		context = {}
+		context['subscribers'] = Subscriber.objects.all()
+		return render(request, self.template_name, context)
