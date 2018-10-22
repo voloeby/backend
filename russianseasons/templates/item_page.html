@@ -24,7 +24,7 @@
 			<h3>Размер</h3>
 			<ul class="stats-tabs">
 				{% for size in item.sizes.all %}
-					<li id='size_{{size.name}}'><a href="javascript:chose_size('{{size.name}}')">{{size.name.upper}}<em> </em></a></li>
+					<li id='size_{{size.name}}'><a style="padding-left:9px;padding-right:9px;border-style:solid;border-color:transparent" href="javascript:chose_size('{{size.name}}')">{{size.name.upper}}<em> </em></a></li>
 				{% endfor %}
 			</ul>
 		</div>
@@ -32,7 +32,7 @@
 			<h3>Цвет</h3>
 			<ul class="stats-tabs">
 				{% for color in item.colors.all %}
-					<li id='color_{{color.name}}'><a href="javascript:chose_color('{{color.name}}')">{{color.name}}<em> </em></a></li>
+					<li id='color_{{color.name}}'><a style="padding-left:9px;padding-right:9px;border-style:solid;border-color:transparent"  href="javascript:chose_color('{{color.name}}')">{{color.name}}<em> </em></a></li>
 				{% endfor %}
 			</ul>
 		</div>

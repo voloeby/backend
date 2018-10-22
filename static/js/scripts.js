@@ -7,12 +7,11 @@ function chose_size(new_size){
 	}
 	else{
 		var prev = $('#size_'+size).find('a');
-		prev.css('border-style', 'none');
+		prev.css('border-color', 'transparent');
 	}
 	var tag = $('#size_'+new_size).find('a');
-	tag.css('padding-left', '7px');
-	tag.css('padding-right', '7px');
-	tag.css('border-style', 'solid');
+	// tag.css('padding-left', '7px');
+	// tag.css('padding-right', '7px');
 	tag.css('border-color', 'black');
 	size = new_size;
 }
@@ -23,12 +22,12 @@ function chose_color(new_color){
 	}
 	else{
 		var prev = $('#color_'+color).find('a');
-		prev.css('border-style', 'none');
+		prev.css('border-color', 'transparent');
 	}
 	var tag = $('#color_'+new_color).find('a');
-	tag.css('padding-left', '7px');
-	tag.css('padding-right', '7px');
-	tag.css('border-style', 'solid');
+	// tag.css('padding-left', '7px');
+	// tag.css('padding-right', '7px');
+	// tag.css('border-style', 'solid');
 	tag.css('border-color', 'black');
 	color = new_color;
 }
