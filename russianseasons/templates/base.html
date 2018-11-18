@@ -45,7 +45,7 @@
 
                 <div class="header__logo">
                     <a class="logo" href="{% url 'home_url' %}">
-                        <img src="/static/images/rs1.png" alt="Homepage" style="width:50%">
+                        <img src="/static/images/rs1.png" alt="Homepage" style="margin-top:12px;mi-width: width:50%;height:auto">
                     </a>
                 </div> <!-- end header__logo -->
 
@@ -59,33 +59,20 @@
                     <li>
                         <a href="/"><i class="fa fa-instagram" aria-hidden="true"></i></a>
                     </li>
-                    <li>
-                        <a href="/"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+					<li>
+                        <a href="/"><i class="fa fa-vk" aria-hidden="true"></i></a>
+                    </li>
+					<li>
+                        <a href="/"><i class="fab fa-telegram"></i></a>
                     </li>
                 </ul> <!-- end header__social -->
 
-                <a class="header__search-trigger" href="#0"></a>
 
-                <div class="header__search">
-
-                    <form role="search" method="get" class="header__search-form" action="#">
-                        <label>
-                            <span class="hide-content">Search for:</span>
-                            <input type="search" class="search-field" placeholder="Type Keywords" value="" name="s" title="Search for:" autocomplete="off">
-                        </label>
-                        <input type="submit" class="search-submit" value="Search">
-                    </form>
-
-                    <a href="#0" title="Close Search" class="header__overlay-close">Close</a>
-
-                </div>  <!-- end header__search -->
-
-
-                <a class="header__toggle-menu" href="#0" title="Menu"><span>Menu</span></a>
+                <a class="header__toggle-menu" href="#0" title="Меню"><span>Меню</span></a>
 
                 <nav class="header__nav-wrap">
 
-                    <h2 class="header__nav-heading h6">Site Navigation</h2>
+                    <h2 class="header__nav-heading h6">Меню</h2>
 
                     <ul class="header__nav">
                         <li><a href="{% url 'shop_url' %}" title="">Магазин</a></li>
@@ -94,7 +81,7 @@
 						<li><a href="{% url 'contacts_url' %}" title="">Контакты</a></li>
                     </ul> <!-- end header__nav -->
 
-                    <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>
+                    <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu" style='float:left'>Закрыть</a>
 
                 </nav> <!-- end header__nav-wrap -->
 
@@ -151,7 +138,7 @@
 
                 </div> <!-- end s-footer__sitelinks -->
 
-                <div class="col-two md-four mob-full s-footer__archives">
+                <!--<div class="col-two md-four mob-full s-footer__archives">
 
                     <h4>Archives</h4>
 
@@ -164,7 +151,7 @@
                         <li><a href="#0">August 2017</a></li>
                     </ul>
 
-                </div> <!-- end s-footer__archives -->
+                </div>--> <!-- end s-footer__archives -->
 
                 <div class="col-two md-four mob-full s-footer__social">
 
@@ -181,7 +168,7 @@
 
                 </div> <!-- end s-footer__social -->
 
-                <div class="col-five md-full end s-footer__subscribe">
+                <div class="col-six md-full end s-footer__subscribe">
 
                     <h4>Подписаться на новости проекта</h4>
 
