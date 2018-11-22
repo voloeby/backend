@@ -67,7 +67,7 @@ class AnotherInputForm(forms.ModelForm):
 		fields = ['key', 'value']
 		widgets = {
 			'key': forms.TextInput(attrs={'autofocus': True, 'class': 'form-control', 'required': ''}),
-			'value': forms.TextInput(attrs={'autofocus': True, 'class': 'form-control', 'required': ''}),
+			'value': forms.Textarea(attrs={'autofocus': True, 'class': 'form-control', 'rows': '7', 'required': ''}),
 		}
 		labels = {
 			'key': 'Название:',
