@@ -2,3 +2,49 @@
 	display:block;
 	margin:auto;
 }
+
+@media (max-width: 800px){
+	.top_logo{
+		font-family: 'Euro Caps';
+		color: rgba(255, 255, 255, 0.6);
+		font-size: 30px;
+		magrin-top:0;
+		padding-top:0;
+	}
+}
+@media (min-width:801px){
+	.top_logo{
+		font-family: 'Euro Caps';
+		color: rgba(255, 255, 255, 0.6);
+		font-size: 50px;
+		magrin-top:0;
+		padding-top:0;
+	}
+}
+@media (max-width:600px){
+	.top_logo{
+		font-family: 'Euro Caps';
+		color: rgba(255, 255, 255, 0.6);
+		font-size: 20px;
+		magrin-top:0;
+		padding-top:0;
+	}
+}
+/* .top_logo{
+	font-family: 'Euro Caps';
+	color: rgba(255, 255, 255, 0.6);
+	font-size: 50px;
+	magrin-top:0;
+	padding-top:0;
+	@media max-width: 800{
+		font-size: 30px !important;
+	}
+	@media max-width: 800{
+		font-size: 30px !important;
+	}
+} */
+
+.my-font{
+	font-family: 'Euro Caps';
+	/* color: rgba(255, 255, 255, 0.6) !important; */
+}

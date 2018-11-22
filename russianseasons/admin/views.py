@@ -211,3 +211,30 @@ class SubscribersView(BaseAdminView):
 		context = {}
 		context['subscribers'] = Subscriber.objects.all()
 		return render(request, self.template_name, context)
+
+class AnotherView(BaseAdminView):
+	template_name = 'admin/another_page.html'
+	def get(self, request):
+		context = {}
+		context['storage'] = Storage.objects.all()
+		return render(request, self.template_name, context)
+
+class NewAnotherView(BaseAdminView):
+	template_name = 'admin/text_input_page.html'
+	def get(self, request, id=None):
+		context = {}
+		context['back_url'] = reverse('admin_another_url')
+		context['header'] = 'Новая запись'
+		obj = None
+		if id!=None:
+			obj = get_object_or_404(Storage, id=id)
+		context['form'] = AnotherInputForm(instance=obj)
+		return render(request, self.template_name, context)
+	def post(self, request, id=None):
+		obj = None
+		if id!=None:
+			obj = get_object_or_404(Storage, id=id)
+		form = AnotherInputForm(request.POST, instance=obj)
+		if form.is_valid:
+			form.save()
+			return HttpResponseRedirect(reverse('admin_another_url'))

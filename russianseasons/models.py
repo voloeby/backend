@@ -77,8 +77,17 @@ class Subscriber(models.Model):
 class Storage(models.Model):
 	key = models.CharField(max_length=100, default='')
 	value = models.TextField()
-	def get(key):
+	def get(self, key):
 		try:
 			return Storage.objects.get(key=key)
 		except:
 			return None
+	def set(self, key, value):
+		obj = None
+		try:
+			obj = Storage.objects.get(key=key)
+		except:
+			pass
+		obj = Storage(key=key, value=value)
+		obj.save()
+		return

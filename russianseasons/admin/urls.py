@@ -22,4 +22,7 @@ urlpatterns = [
 	path('blog/posts/edit/<int:id>', views.NewBlogPostView.as_view(), name='edit_blog_post_url'),
 	path('messages', views.MessagesView.as_view(), name='admin_messages_url'),
 	path('subscribers', views.SubscribersView.as_view(), name='admin_subscribers_url'),
+	path('another', views.AnotherView.as_view(), name='admin_another_url'),
+	path('another/new', views.NewAnotherView.as_view(), name='new_another_url'),
+	path('another/edit/<int:id>', views.NewAnotherView.as_view(), name='edit_another_url'),
 ]

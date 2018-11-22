@@ -60,3 +60,16 @@ class ItemForm(forms.ModelForm):
 
 class TextInputForm(forms.Form):
 	text = forms.CharField(widget=forms.TextInput(attrs={'autofocus': True, 'class': 'form-control'}), label='')
+
+class AnotherInputForm(forms.ModelForm):
+	class Meta:
+		model = Storage
+		fields = ['key', 'value']
+		widgets = {
+			'key': forms.TextInput(attrs={'autofocus': True, 'class': 'form-control', 'required': ''}),
+			'value': forms.TextInput(attrs={'autofocus': True, 'class': 'form-control', 'required': ''}),
+		}
+		labels = {
+			'key': 'Название:',
+			'value': 'Значение',
+			}
