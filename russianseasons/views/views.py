@@ -5,8 +5,10 @@ from russianseasons.models import *
 # Create your views here.
 
 def home_page(request):
+	context = {}
 	template_name = 'home.html'
-	return render(request, template_name)
+	context['posts'] = MainPagePost.objects.all()
+	return render(request, template_name, context)
 
 
 

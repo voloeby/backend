@@ -4,6 +4,14 @@
 	Главная
 {% endblock %}
 
-{% block context %}
-
+{% block content %}
+	<section class="s-content s-content--narrow">
+		<div class="row">
+			{% for post in posts %}
+						<div class="">
+							{{post.content|safe}}
+						</div>
+			{% endfor %}
+		</div>
+	</section>
 {% endblock %}

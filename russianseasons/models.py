@@ -62,6 +62,12 @@ class BlogPost(models.Model):
 	class Meta:
 		ordering = ['-datetime']
 
+class MainPagePost(models.Model):
+	content = RichTextUploadingField(blank=True, null=True)
+	datetime = models.DateTimeField(auto_now_add=True)
+	class Meta:
+		ordering = ['-datetime']
+
 class Message(models.Model):
 	name = models.CharField(max_length = 10000, default = '')
 	email = models.CharField(max_length = 10000, default = '')

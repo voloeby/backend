@@ -315,3 +315,41 @@ class NewAnotherView(BaseAdminView):
 		if form.is_valid:
 			form.save()
 			return HttpResponseRedirect(reverse('admin_another_url'))
+
+
+class MainPagePostView(BaseAdminView):
+	template_name = 'admin/main_page_posts_page.html'
+	def get(self, request):
+		context={}
+		context['posts'] = MainPagePost.objects.all()
+		return render(request, self.template_name, context)
+
+class NewMainPagePostView(BaseAdminView):
+	template_name = 'admin/main_page_post_page.html'
+	def get(self, request, id=None):
+		context={}
+		if id == None:
+			obj = None
+			context['header'] = 'Добавить пост'
+		else:
+			obj = get_object_or_404(MainPagePost, id=id)
+			context['header'] = 'Изменить пост'
+		context['form'] = MainPagePostForm(instance=obj)
+		return render(request, self.template_name, context)
+	def post(self, request, id=None):
+		if id == None:
+			obj = None
+		else:
+			obj = get_object_or_404(MainPagePost, id=id)
+		form = MainPagePostForm(request.POST, request.FILES, instance=obj)
+		if form.is_valid():
+			form.save()
+			return HttpResponseRedirect(reverse('admin_main_page_posts_url'))
+		else:
+			context['header'] = 'Добавить пост'
+			context['form'] = form
+			return render(request, self.template_name, context)
+	def delete(self, request, id):
+		obj = get_object_or_404(MainPagePost, id=id)
+		obj.delete()
+		return HttpResponse('ok')

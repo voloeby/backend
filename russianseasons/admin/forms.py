@@ -73,3 +73,11 @@ class AnotherInputForm(forms.ModelForm):
 			'key': 'Название:',
 			'value': 'Значение',
 			}
+
+class MainPagePostForm(forms.ModelForm):
+	class Meta:
+		model = MainPagePost
+		fields = ['content']
+		labels = {
+			'content': '',
+		}

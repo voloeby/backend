@@ -25,4 +25,7 @@ urlpatterns = [
 	path('another', views.AnotherView.as_view(), name='admin_another_url'),
 	path('another/new', views.NewAnotherView.as_view(), name='new_another_url'),
 	path('another/edit/<int:id>', views.NewAnotherView.as_view(), name='edit_another_url'),
+	path('mainpageposts', views.MainPagePostView.as_view(), name='admin_main_page_posts_url'),
+	path('mainpageposts/new', views.NewMainPagePostView.as_view(), name='new_main_page_post_url'),
+	path('mainpageposts/edit/<int:id>', views.NewMainPagePostView.as_view(), name='edit_main_page_post_url'),
 ]
