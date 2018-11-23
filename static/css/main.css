@@ -1349,7 +1349,9 @@ button::-moz-focus-inner, input::-moz-focus-inner {
  * ------------------------------------------------------------------- */
  @media only screen and (max-width: 400px) {
 	.header__overlay-close{
-		margin-left: 3rem !important;
+		display: block;
+
+		margin-left: auto !important;
 	}
  }
 
@@ -1819,7 +1821,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 .header__social li {
-   display: inline-block;
+   display: block;
    margin-right: 5px;
    padding-left: 0;
 }
@@ -2325,9 +2327,11 @@ body.search-is-visible {
    }
 
    .header__nav li {
+	  font-size: 150%;
       display: block;
+	  margin-left:auto;
       padding: 0;
-      text-align: left;
+      /* text-align: left; */
    }
 
    .header__nav li ul {
