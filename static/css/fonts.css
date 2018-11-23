@@ -1,21 +1,8 @@
-/* ===================================================================
- * fonts.scss
- *
- * ------------------------------------------------------------------- */
-
-/*
- * libre baskerville
-================================================================================ */
 @font-face {
 	font-family: "Euro-Caps";
+	src: url("/static/fonts/euro_caps/12361.woff2") format("woff2"), url("/static/fonts/euro_caps/12361.woff") format("woff"), url("/static/fonts/euro_caps/12361.svg") format("svg"), url("/static/fonts/euro_caps/12361.ttf") format("truetype"), url("/static/fonts/euro_caps/12361.otf") format("opentype");
 	font-style: normal;
 	font-weight: normal;
-	/* src: url({% static "fonts/euro_caps/euru_caps.ttf" %}) format("truetype"); */
-	src: url("/static/fonts/euro_caps/12361.ttf") format("truetype");
-	src: url("fonts/euro_caps/12361.otf") format("opentype");
-	src: url("fonts/euro_caps/12361.woff") format("woff");
-	src: url("fonts/euro_caps/12361.woff2") format("woff2");
-	src: url("/static/fonts/euro_caps/12361.svg") format("svg");
 }
 
 @font-face {
