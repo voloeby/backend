@@ -18,6 +18,7 @@
     <!-- CSS
     ================================================== -->
     <link rel="stylesheet" href="/static/css/base.css">
+	<link rel="stylesheet" href="/static/css/fonts.css">
     <link rel="stylesheet" href="/static/css/vendor.css">
     <link rel="stylesheet" href="/static/css/main.css">
 	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
@@ -33,14 +34,19 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
 	<style type="text/css">
-		@font-face {
-		font-family: "Euro Caps";
-			src: url({% static "fonts/euro_caps/12361.ttf" %}) format("truetype");
-			src: url({% static "fonts/euro_caps/12361.woff" %}) format("woff");
-			src: url({% static "fonts/euro_caps/12361.woff2" %}) format("woff2");
-			src: url({% static "fonts/euro_caps/12361.svg" %}) format("svg");
-		}
-	</style>
+		/* @font-face { */
+			/* font-family: "Euro-Caps"; */
+			/* font-styles: normal; */
+			/* src: url({% static "fonts/euro_caps/12361.ttf" %}) format("truetype"); */
+			/* src: url({% static "fonts/euro_caps/12361.otf" %}) format("opentype"); */
+			/* src: url({% static "fonts/euro_caps/12361.woff" %}) format("woff"); */
+			/* src: url({% static "fonts/euro_caps/12361.woff2" %}) format("woff2"); */
+			/* src: url({% static "fonts/euro_caps/12361.svg" %}) format("svg"); */
+		/* } */
+		/* h1{ */
+			/* font-family: "Euro-Caps"; */
+		/* } */
+</style>
 	{% block head %}
 
 	{% endblock %}
@@ -80,7 +86,7 @@
 
                 <nav class="header__nav-wrap" >
 
-                    <ul class="header__nav" style="font-family: 'Euro Caps'">
+                    <ul class="header__nav" style="font-family: 'Euro-Caps'">
                         <li><a href="{% url 'shop_url' %}" title="">Магазин</a></li>
                         <li><a href="{% url 'about_url' %}" title="">О нас</a></li>
 						<li><a href="{% url 'contacts_url' %}" title="">Контакты</a></li>
@@ -98,7 +104,7 @@
 				<div class="col-full">
 					<div class="featured">
 						<img src="static/images/1.jpg" style="display:block;margin-left:auto;margin-right:auto;">
-					</div> 
+					</div>
 				</div>
 			</div>
 		{% endif %}
