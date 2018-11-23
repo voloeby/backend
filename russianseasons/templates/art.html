@@ -19,7 +19,7 @@
 				{% for item in photos %}
 					<article class="masonry__brick entry format-standard" data-aos="fade-up">
 						<div class="entry__thumb">
-							<a href="{% url 'item_url' item.id %}" class="entry__thumb-link">
+							<a href="{{item.link}}" class="entry__thumb-link" target="_blank">
 								<img src="{{item.image.url}}">
 							</a>
 						</div>
