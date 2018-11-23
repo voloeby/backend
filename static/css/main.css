@@ -1759,7 +1759,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 .header {
    position: absolute;
    text-align: center;
-   top: 30px;
+   top: 20px;
    width: 100%;
 }
 
@@ -1812,7 +1812,11 @@ button::-moz-focus-inner, input::-moz-focus-inner {
    padding: 0;
    position: absolute;
    left: 20px;
-   top: 12px;
+   top: 0px;
+}
+
+.header__social li a i{
+	font-size: 42px;
 }
 
 .header__social a {
