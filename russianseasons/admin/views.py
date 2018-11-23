@@ -353,3 +353,42 @@ class NewMainPagePostView(BaseAdminView):
 		obj = get_object_or_404(MainPagePost, id=id)
 		obj.delete()
 		return HttpResponse('ok')
+
+class ArtPage(BaseAdminView):
+	template_name = 'admin/art_page.html'
+	def get(self, request, id=None):
+		context = {}
+		context['photos'] = Art.objects.all()
+		return render(request, self.template_name, context)
+
+class NewArtPage(BaseAdminView):
+	template_name = 'admin/new_art_page.html'
+	def get(self, request, id=None):
+		context={}
+		if id == None:
+			obj = None
+			context['header'] = 'Добавить изображение'
+		else:
+			obj = get_object_or_404(Art, id=id)
+			context['header'] = 'Изменить изображение'
+		context['form'] = ArtForm(instance=obj)
+		return render(request, self.template_name, context)
+	def post(self, request, id=None):
+		if id == None:
+			obj = None
+		else:
+			obj = get_object_or_404(Art, id=id)
+		form = ArtForm(request.POST, request.FILES, instance=obj)
+		if form.is_valid():
+			form.save()
+			return HttpResponseRedirect(reverse('admin_art_url'))
+		else:
+			context['header'] = 'Добавить изображение'
+			context['form'] = form
+			return render(request, self.template_name, context)
+	def delete(self, request, id):
+		print(Art.objects.all())
+
+		obj = get_object_or_404(Art, id=id)
+		obj.delete()
+		return HttpResponse('ok')

@@ -81,3 +81,12 @@ class MainPagePostForm(forms.ModelForm):
 		labels = {
 			'content': '',
 		}
+
+class ArtForm(forms.ModelForm):
+	class Meta:
+		model = Art
+		fields = ['link', 'image']
+		labels = {
+			'link': 'Ccылка:',
+			'image': 'Изображение:',
+		}

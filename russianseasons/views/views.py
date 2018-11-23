@@ -13,6 +13,7 @@ def home_page(request):
 def art_page(request):
 	context = {}
 	template_name = 'art.html'
+	context['photos'] = Art.objects.all()
 	return render(request, template_name, context)
 
 

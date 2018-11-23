@@ -1,0 +1,29 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+	<div class="container">
+		<h1>Творчество</h1>
+		<a href="{% url 'new_art_url' %}">
+			<button class="btn btn-primary">Добавить фото</button>
+		</a>
+		<div class="row">
+			{% for photo in photos %}
+				<div class="col-3 mt-4" id="{{photo.id}}">
+					<img src="{{photo.image.url}}" class="w-100">
+					<div class="row mt-2">
+						<div class="col">
+							<a href="{% url 'edit_art_url' photo.id %}" id='edit_link_{{photo.id}}'>
+								<button class="btn btn-success container-fluid">
+									Изменить
+								</button>
+							</a>
+						</div>
+						<div class="col">
+							<button class="btn btn-danger container-fluid" onclick="javascript:del_post({{photo.id}})">Удалить</button>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

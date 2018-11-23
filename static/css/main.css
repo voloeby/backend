@@ -1458,7 +1458,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 .masonry .entry__thumb, .masonry .entry__text {
-   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.05);
+   box-shadow: 0 2px 3px rgba(0, 0, 0, 0);
 }
 
 .masonry .entry__thumb {
@@ -1475,7 +1475,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 .masonry .entry__thumb-link::before {
    content: "";
    display: block;
-   background: rgba(0, 0, 0, 0.8);
+   background: rgba(0, 0, 0, 0.4);
    opacity: 0;
    visibility: hidden;
    position: absolute;
@@ -1521,16 +1521,16 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 
 .masonry .entry__thumb:hover .entry__thumb-link::after {
    opacity: 1;
-   visibility: visible;
-   -webkit-transform: scale(1);
+   /* visibility: visible; */
+   /* -webkit-transform: scale(1);
    -ms-transform: scale(1);
-   transform: scale(1);
+   transform: scale(1); */
 }
 
 .masonry .entry__thumb:hover .entry__thumb-link img {
-   -webkit-transform: scale(1.05);
+   /* -webkit-transform: scale(1.05);
    -ms-transform: scale(1.05);
-   transform: scale(1.05);
+   transform: scale(1.05); */
 }
 
 .masonry .entry__text {
@@ -1820,7 +1820,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 .header__social a {
-   color: #FFFFFF;
+   color: rgba(255, 255, 255, 0.8);
 }
 
 .header__social li {
@@ -2185,7 +2185,7 @@ body.search-is-visible {
 
 .header__nav li a {
    display: block;
-   color: rgba(255, 255, 255, 0.6);
+   color: rgba(255, 255, 255, 0.8);
    line-height: 39px;
 }
 
