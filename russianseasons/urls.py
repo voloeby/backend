@@ -10,6 +10,7 @@ from russianseasons.decorators import *
 urlpatterns = [
 	url('^admin/', include('russianseasons.admin.urls')),
 	path('', views.home_page, name='home_url'),
+	path('art', views.art_page, name='art_url'),
 	url('^shop$', shop.shop_page, name='shop_url'),
 	url('^shop/item/(?P<id>\d+)$', shop.ItemView.as_view(), name='item_url'),
 	path('contacts', contacts.ContactsView.as_view(), name='contacts_url'),

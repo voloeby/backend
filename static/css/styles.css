@@ -47,3 +47,13 @@
 .my-font{
 	font-family: 'Euro-Caps';
 }
+
+.art_list{
+	list-style: none;
+}
+
+.art_list li{
+	width:33%;
+	display: inline-block;
+	vertical-align: top;
+}

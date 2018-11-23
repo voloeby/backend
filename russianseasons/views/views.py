@@ -10,6 +10,10 @@ def home_page(request):
 	context['posts'] = MainPagePost.objects.all()
 	return render(request, template_name, context)
 
+def art_page(request):
+	context = {}
+	template_name = 'art.html'
+	return render(request, template_name, context)
 
 
 def contacts_page(request):
