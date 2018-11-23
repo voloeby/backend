@@ -19,19 +19,35 @@
 
 				<div class="row">
 					<div class="col-six tab-full">
+						{% if storage.address %}
 						<h3>Адрес</h3>
-
-						<p>
-						Пока не существует
-						</p>
+						<address class="">
+							{{storage.address}}
+						</address>
+						{% endif %}
 
 					</div>
 
 					<div class="col-six tab-full">
 						<h3>Контакты</h3>
+						{% if storage.contact_email %}
+							<a href="mailto:{{storage.contact_email}}">{{storage.email}}</a><br>
+						{% endif %}
+						{% if storage.contact_telegram %}
+							telegrm:
+							<a href="https://t.me/{{storage.contact_telegram}}">
+								@{{storage.contact_telegram}}
+							</a>
+							<br>
+						{% endif %}
+						{% if storage.contact_whatsapp %}
+							whatsapp:
+							<a href="https://wa.me/{{storage.contact_whatsapp}}">
+								{{storage.contact_whatsapp}}
+							</a>
+							<br>
+						{% endif %}
 
-						<p>voloeby.com@yandex.ru<br>
-						telegrm: @voloeby_chat<br>
 						</p>
 					</div>
 				</div>
