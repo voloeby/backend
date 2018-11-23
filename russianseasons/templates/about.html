@@ -4,6 +4,11 @@
 	O нас
 {% endblock %}
 
+{% block head %}
+	<meta name="description" content="{{storage.meta_about_description}}">
+	<meta name="keywords" content="{{storage.meta_about_keywords}}">
+{% endblock %}
+
 {% block content %}
 	<section class="s-content s-content--narrow">
 
@@ -22,7 +27,6 @@
 			</div>
 
 			<div class="col-full s-content__main">
-
 				<p class="lead">{{storage.about_1}}</p>
 
 				<p>{{storage.about_2}}</p>

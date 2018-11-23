@@ -4,15 +4,22 @@
 	Главная
 {% endblock %}
 
+{% block head %}
+	<meta name="description" content="{{storage.meta_home_description}}">
+	<meta name="keywords" content="{{storage.meta_home_keywords}}">
+{% endblock %}
+
 {% block content %}
-	<section class="s-content s-content--narrow">
-		<div class="row">
-			
-			{% for post in posts %}
-						<div class="">
-							{{post.content|safe}}
-						</div>
-			{% endfor %}
-		</div>
-	</section>
+	{% if posts.count %}
+		<section class="s-content s-content--narrow">
+			<div class="row">
+
+				{% for post in posts %}
+							<div class="">
+								{{post.content|safe}}
+							</div>
+				{% endfor %}
+			</div>
+		</section>
+	{% endif %}
 {% endblock %}
