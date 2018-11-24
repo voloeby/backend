@@ -36,9 +36,9 @@ INSTALLED_APPS = [
 	'django.contrib.flatpages',
 	'ckeditor',
 	'ckeditor_uploader',
-	# 'alfa',
 	'russianseasons',
-	# 'widget_tweaks',
+	'easy_thumbnails',
+    'image_cropping',
 ] #+ get_core_apps()
 
 SITE_ID = 1

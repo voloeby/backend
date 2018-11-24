@@ -43,9 +43,10 @@ class ItemForm(forms.ModelForm):
 	sizes = forms.ModelMultipleChoiceField(queryset=Size.objects.all(), widget=SizeCheckboxWidget(), label='Размеры:')
 	class Meta:
 		model = ItemPrototype
-		fields = ['name', 'description', 'price', 'colors', 'sizes', 'image']
+		fields = ['name', 'sub_name', 'description', 'price', 'colors', 'sizes', 'image']
 		widgets = {
 			'name': forms.widgets.TextInput(attrs={'class': 'form-control'}),
+			'sub_name': forms.widgets.TextInput(attrs={'class': 'form-control'}),
 			'description': forms.widgets.Textarea(attrs={'class': 'form-control',}),
 			'price': forms.widgets.NumberInput(attrs={'class': 'form-control',})
 			# 'colors': forms.widgets.CheckboxInput(attrs={'class': 'form-control',}),
@@ -53,6 +54,7 @@ class ItemForm(forms.ModelForm):
 		}
 		labels = {
 			'name': 'Название:',
+			'sub_name': 'Название кратко',
 			'description': 'Описание:',
 			'colors': 'Цвета:',
 			'price': 'Цена:',
@@ -66,7 +68,7 @@ class AnotherInputForm(forms.ModelForm):
 		model = Storage
 		fields = ['key', 'value']
 		widgets = {
-			'key': forms.TextInput(attrs={'autofocus': True, 'class': 'form-control', 'required': ''}),
+			'key': forms.TextInput(attrs={'class': 'form-control', 'required': ''}),
 			'value': forms.Textarea(attrs={'autofocus': True, 'class': 'form-control', 'rows': '7',}),
 		}
 		labels = {
@@ -86,6 +88,9 @@ class ArtForm(forms.ModelForm):
 	class Meta:
 		model = Art
 		fields = ['link', 'image']
+		widgets = {
+			'link': forms.TextInput(attrs={'autofocus': True, 'class': 'form-control', 'required': ''}),
+		}
 		labels = {
 			'link': 'Ccылка:',
 			'image': 'Изображение:',
