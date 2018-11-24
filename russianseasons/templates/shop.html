@@ -40,7 +40,7 @@
 				<div class="grid-sizer"></div>
 				{% for item in items %}
 					{% if item.show %}
-						<article class="masonry__brick entry format-standard" data-aos="fade-up">
+						<article class="masonry__brick entry format-standard" data-aos="fade-up" itemscope itemtype='https://schema.org/Thing'>
 
 							<div class="entry__thumb">
 								<a href="{% url 'item_url' item.id %}" class="entry__thumb-link">
