@@ -1,14 +1,12 @@
 {% extends 'base.html' %}
 {% load thumbnail %}
-{% load get_storage %}
-{% get_storage as storage %}
+
 
 {% block title %}Творчество{% endblock %}
+{% block description %}{{storage.meta_art_description}}{% endblock %}
+{% block keywords %}{{storage.meta_art_keywords}}{% endblock %}
 
 {% block head %}
-	<meta name="description" content="{{storage.meta_art_description}}">
-	<meta name="keywords" content="{{storage.meta_art_keywords}}">
-
 	<meta name="og:title" content="Творчество">
 	<meta name="og:url" content="http://voloeby.com{{request.path}}">
 	<meta name="og:type" content="article">
@@ -34,7 +32,6 @@
 				<h1 class="my-font">Творчество</h1>
 			</div>
 		</div>
-
 		<div class="row masonry-wrap" style="margin-top:10px">
 			<div class="masonry">
 

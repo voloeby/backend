@@ -1,13 +1,10 @@
 {% extends 'base.html' %}
 {% load thumbnail %}
-{% load get_storage %}
-{% get_storage as storage %}
 
 {% block title %}{{item.sub_name}} – {{item.price}} руб{% endblock %}
+{% block description %}{{item.description}}{% endblock %}
 
 {% block head %}
-	<meta name="description" content="{{item.description}}">
-	<meta name="keywords" content="">
 	<meta name="og:title" content="{{item.sub_name}}">
 	<meta name="og:url" content="http://voloeby.com{{request.path}}">
 	<meta name="og:type" content="og:product">

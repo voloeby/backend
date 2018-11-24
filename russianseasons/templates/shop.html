@@ -1,16 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load get_storage %}
-{% get_storage as storage %}
 
 {% block title %}Магазин{% endblock %}
+{% block description %}{{storage.meta_shop_description}}{% endblock %}
+{% block keywords %}{{storage.meta_shop_keywords}}{% endblock %}
 
 {% block meta_title %}Магазин{% endblock %}
 
 {% block head %}
-	<meta name="description" content="{{storage.meta_shop_description}}">
-	<meta name="keywords" content="{{storage.meta_shop_keywords}}">
-
 	<meta name="og:title" content="Магазин">
 	<meta name="og:url" content="http://voloeby.com{{request.path}}">
 	<meta name="og:type" content="article">
