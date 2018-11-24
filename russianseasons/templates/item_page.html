@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load thumbnail %}
+{% load get_storage %}
+{% get_storage as storage %}
 
 {% block title %}{{item.sub_name}} – {{item.price}} руб{% endblock %}
 

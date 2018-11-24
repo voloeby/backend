@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load get_storage %}
+{% get_storage as storage %}
 
 {% block title %}O нас{% endblock %}
 
@@ -13,7 +15,14 @@
 	<meta name="og:locale" content="ru_RU">
 	<meta name="og:description" content="{{storage.meta_about_description}}">
 	<meta name="og:image" content="http://voloeby.com{% static 'images/favicon/favicon.png' %}">
-
+	<meta name="og:image:width" content="1200">
+	<meta name="og:image:height" content="630">
+	<meta name="og:image" content="http://voloeby.com{% static 'images/favicon/about_968.png' %}">
+	<meta name="og:image:width" content="968">
+	<meta name="og:image:height" content="504">
+	<meta name="og:image" content="http://voloeby.com{% static 'images/favicon/about_square.png' %}">
+	<meta name="og:image:width" content="1200">
+	<meta name="og:image:height" content="1200">
 {% endblock %}
 
 {% block content %}
