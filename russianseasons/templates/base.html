@@ -26,12 +26,11 @@
     <!-- script
     ================================================== -->
     <script src="/static/js/modernizr.js"></script>
-    <script src="/static/js/pace.min.js"></script>
+    <!--<script src="/static/js/pace.min.js"></script>-->
 
     <!-- favicons
     ================================================== -->
     <link rel="shortcut icon" href="{% static 'images/icon.png' %}" type="image/x-icon">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
 
 	<style type="text/css">
 		@font-face {
@@ -49,7 +48,7 @@
 	{% include "local_meta.html" %}
 </head>
 
-<body id="top">
+<body id="top" style="min-width:320px">
 
     <!-- pageheader
     ================================================== -->
@@ -137,9 +136,10 @@
                         <li><a href="{% url 'shop_url' %}">Магазин</a></li>
                         <li><a href="{% url 'about_url' %}">О нас</a></li>
                         <li><a href="{% url 'contacts_url' %}">Контакты</a></li>
+						<li><a href="{% url 'art_url' %}">Творчество</a></li>
                     </ul>
 
-                </div> <!-- end s-footer__sitelinks -->
+                </div>
 
 
 
