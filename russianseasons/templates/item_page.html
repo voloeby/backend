@@ -7,6 +7,13 @@
 {% block head %}
 	<meta name="description" content="{{item.description}}">
 	<meta name="keywords" content="">
+	<meta name="og:title" content="{{item.name}}">
+	<meta name="og:url" content="voloeby.com{{request.path}}">
+	<meta name="og:type" content="article">
+	<meta name="og:description" content="{{item.description}}">
+	<meta name="og:image" content="{{item.image.url}}">
+	<meta name="og:price:amount" content="{{item.price}}">
+	<meta name="og:price:currency" content="RUB">
 {% endblock %}
 
 {% block content %}
