@@ -1,9 +1,7 @@
 {% extends 'base.html' %}
 {% load thumbnail %}
 
-{% block title %}
-	{{item.sub_name}} – {{item.price}} руб
-{% endblock %}
+{% block title %}{{item.sub_name}} – {{item.price}} руб{% endblock %}
 
 {% block head %}
 	<meta name="description" content="{{item.description}}">
