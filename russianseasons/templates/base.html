@@ -1,38 +1,25 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="ru">
 <head>
 	{% load get_storage %}
 	{% get_storage as storage %}
 	{% load static %}
 	{% url 'home_url' as home_url %}
-    <!--- basic page needs
-    ================================================== -->
     <meta charset="utf-8">
     <title>Русские сезоны | {% block title %}{% endblock %}</title>
     <meta name="description" content="{% block description %}{% endblock %}">
 	<meta name="keywords" content="волоебы, русские сезоны, футболка, {% block keywords %}{% endblock %}">
     <meta name="author" content="">
-    <!-- mobile specific metas
-    ================================================== -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-    <!-- CSS
-    ================================================== -->
     <link rel="stylesheet" href="/static/css/base.css">
 	<link rel="stylesheet" href="/static/css/fonts.css">
     <link rel="stylesheet" href="/static/css/vendor.css">
     <link rel="stylesheet" href="/static/css/main.css">
 	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <!-- script
-    ================================================== -->
     <script src="/static/js/modernizr.js"></script>
     <!--<script src="/static/js/pace.min.js"></script>-->
-
-    <!-- favicons
-    ================================================== -->
     <link rel="shortcut icon" href="{% static 'images/favicon/favicon.png' %}" type="image/png">
-
 	<link rel="icon" type="image/png" href="{% static 'images/favicon/favicon.png' %}" size="975x975">
 	<link rel="icon" type="image/png" href="{% static 'images/favicon/favicon16.png' %}" sizes="16x16">
 	<link rel="icon" type="image/png" href="{% static 'images/favicon/favicon32.png' %}" sizes="32x32">
@@ -47,7 +34,6 @@
 	<link rel="apple-touch-icon" href="{% static 'images/favicon/favicon167.png' %}" sizes="167x167">
 	<link rel="icon" href="{% static 'images/favicon/favicon.ico' %}" type="image/x-icon">
   	<link rel="shortcut icon" href="{% static 'images/favicon/favicon.ico' %}" type="image/x-icon">
-
 	<style type="text/css">
 		@font-face {
 		font-family: "Euro-Caps";
@@ -59,16 +45,10 @@
 	</style>
 	<meta name="og:site_name" content="Русские сезоны">
 	<meta name="og:site" content="Русские сезоны">
-	{% block head %}
-
-	{% endblock %}
+	{% block head %}	{% endblock %}
 	{% include "local_meta.html" %}
 </head>
-
 <body id="top" style="min-width:320px">
-
-    <!-- pageheader
-    ================================================== -->
     <section class="s-pageheader {% if request.path == home_url %}s-pageheader--home{% endif %}">
         <header class="header">
             <div class="header__content row">
@@ -77,10 +57,8 @@
 						<span class="top_logo">
 							Русские Сезоны
 						</span>
-                        {# <img src="/static/images/rs1.png" alt="Homepage" style="margin-top:12px;mi-width: width:50%;height:auto"> #}
                     </a>
-                </div> <!-- end header__logo -->
-
+                </div>
                 <ul class="header__social">
                     <li>
                         <a href="{{storage.instagram_link}}" target="_blank"><i class="fab fa-instagram" aria-hidden="true"></i></a>
@@ -91,27 +69,19 @@
 					<li>
                         <a href="{{storage.telegram_link}}" target="_blank"><i class="fab fa-telegram-plane"></i></a>
                     </li>
-                </ul> <!-- end header__social -->
-
-
+                </ul>
                 <a class="header__toggle-menu" href="#0" title="Меню"><span>Меню</span></a>
-
                 <nav class="header__nav-wrap" >
-
                     <ul class="header__nav" style="font-family: 'Euro-Caps'">
                         <li><a href="{% url 'shop_url' %}" title="">Магазин</a></li>
                         <li><a href="{% url 'about_url' %}" title="">О нас</a></li>
 						<li><a href="{% url 'contacts_url' %}" title="">Контакты</a></li>
 						<li><a href="{% url 'art_url' %}" title="">Творчество</a></li>
-                    </ul> <!-- end header__nav -->
-
+                    </ul>
                     <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu" style='float:left'>Закрыть</a>
-
-                </nav> <!-- end header__nav-wrap -->
-
-            </div> <!-- header-content -->
-        </header> <!-- header -->
-
+                </nav>
+            </div>
+        </header>
 		{% if request.path == home_url %}
 			<div class="pageheader-content row">
 				<div class="col-full">
@@ -121,33 +91,21 @@
 				</div>
 			</div>
 		{% endif %}
-
-
-    </section> <!-- end s-pageheader -->
-	{% block content %}
-
-	{% endblock %}
+    </section>
+	{% block content %}{% endblock %}
     <footer class="s-footer">
-
         <div class="s-footer__main">
             <div class="row">
-
 				<div class="col-two md-four mob-full s-footer__social">
-
                     <h4>Соцсети</h4>
-
                     <ul class="s-footer__linklist">
                         <li><a href="{{storage.instagram_link}}">Instagram</a></li>
                         <li><a href="{{storage.vk_link}}">Вконтакте</a></li>
                         <li><a href="{{storage.telegram_link}}">Телеграм</a></li>
                     </ul>
-
                 </div>
-
                 <div class="col-two md-four mob-full s-footer__sitelinks">
-
                     <h4>Ссылки</h4>
-
                     <ul class="s-footer__linklist">
                         <li><a href="{% url 'home_url' %}">Главная</a></li>
                         <li><a href="{% url 'shop_url' %}">Магазин</a></li>
@@ -155,49 +113,30 @@
                         <li><a href="{% url 'contacts_url' %}">Контакты</a></li>
 						<li><a href="{% url 'art_url' %}">Творчество</a></li>
                     </ul>
-
                 </div>
-
-
-
                 <div class="col-six md-full end s-footer__subscribe">
-
                     <h4>Подписаться на новости проекта</h4>
-
-
-
                     <div class="subscribe-form">
                         <form id="mc-form" class="group" novalidate="true" action="">
-
                             <input type="email" value="" name="EMAIL" class="email" id="mc-email" placeholder="Email" required="">
-
                             <input type="submit" name="subscribe" value="Подписаться" onclick="javascript:subscribe_to_news()">
                         </form>
                     </div>
-
-                </div> <!-- end s-footer__subscribe -->
-
+                </div>
             </div>
-        </div> <!-- end s-footer__main -->
-
+        </div>
         <div class="s-footer__bottom">
             <div class="row">
                 <div class="col-full">
-
                     <div class="go-top">
                         <a class="smoothscroll" title="Back to Top" href="#top"></a>
                     </div>
                 </div>
             </div>
-        </div> <!-- end s-footer__bottom -->
-
-    </footer> <!-- end s-footer -->
+        </div>
+    </footer>
 	<div id='csrf_token' style='display:none'>{{csrf_token}}</div>
-
-    <!-- preloader
-    ================================================== -->
-	<!--
-    <div id="preloader">
+    <!--<div id="preloader">
         <div id="loader">
             <div class="line-scale">
                 <div></div>
@@ -207,15 +146,10 @@
                 <div></div>
             </div>
         </div>
-    </div>
-	-->
-
-    <!-- Java Script
-    ================================================== -->
+    </div>-->
     <script src="/static/js/jquery-3.2.1.min.js"></script>
     <script src="/static/js/plugins.js"></script>
     <script src="/static/js/main.js"></script>
 	<script src="{% static 'js/scripts.js' %}"></script>
 </body>
-
 </html>

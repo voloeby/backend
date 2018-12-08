@@ -83,3 +83,17 @@ function subscribe_to_news(){
 		$('.subscribe-form').html('Вы успешно подписались на новости.');
 	}});
 }
+
+var span = $('#about_surp');
+var ch = "a";
+function change_ch(){
+	if(ch=="а"){
+		ch = "е";
+		span.text(ch);
+	}
+	else{
+		ch = "а";
+		span.text(ch);
+	}
+}
+// span.click(()=>span.text('е'),()=>span.text('а'));
