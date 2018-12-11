@@ -44,8 +44,13 @@
 
 							<div class="entry__thumb">
 								<a href="{% url 'item_url' item.id %}" class="entry__thumb-link">
-									<img src="{{item.image.url}}"
-										  alt="{{item.name}}">
+									{% if item.images.count > 0 %}
+										{% with item.images.all|first as image %}
+											<img src="{{ image.file.url }}" alt="{{item.name}}">
+										{% endwith %}
+									{% else %}
+										<img src="{% static 'images/favicon/favicon.png' %}" alt="{{item.name}}">
+									{% endif %}
 								</a>
 							</div>
 

@@ -22,6 +22,11 @@ class ItemView(View):
 		context = {}
 		template_name = 'item_page.html'
 		item = get_object_or_404(ItemPrototype, id=id)
+		if item.images.count() > 0:
+			item.main_image = item.images.all()[0]
+			item.small_images = item.images.all()[1:]
+		else:
+			pass
 		context['item'] = item
 		return render(request, template_name, context)
 	def post(self, request, id):

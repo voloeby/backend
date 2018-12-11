@@ -7,8 +7,9 @@ class Category(models.Model):
 	name = models.CharField(max_length=1000)
 
 class Image(models.Model):
-	file = models.ImageField()
-	name = models.CharField(max_length=1000, null=True)
+	file = models.ImageField(upload_to='img/items/')
+	name = models.CharField(max_length=1000, null=True, default=None)
+	number = models.IntegerField(default=0)
 
 class Color(models.Model):
 	name = models.CharField(max_length=1000)
@@ -24,7 +25,8 @@ class Size(models.Model):
 
 class ItemPrototype(models.Model):
 	categories = models.ManyToManyField(Category)
-	# images = models.ManyToManyField(Image)
+	images = models.ManyToManyField(Image, related_name='item')
+	# main_image = models.OneToOneField(Image, on_delete=models.CASCADE, related_name='item')
 	image = models.ImageField(upload_to='img/items/')
 	sizes = models.ManyToManyField(Size)
 	name = models.CharField(max_length = 1000)
@@ -33,6 +35,7 @@ class ItemPrototype(models.Model):
 	colors = models.ManyToManyField(Color)
 	price = models.IntegerField(null=True)
 	show = models.BooleanField(default=False)
+
 
 class Item(models.Model):
 	color = models.ForeignKey(Color, on_delete=models.CASCADE)

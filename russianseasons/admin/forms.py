@@ -95,3 +95,8 @@ class ArtForm(forms.ModelForm):
 			'link': 'Ccылка:',
 			'image': 'Изображение:',
 		}
+
+class ImageForm(forms.ModelForm):
+	class Meta:
+		model = Image
+		fields = ['file']

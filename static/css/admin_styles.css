@@ -11,3 +11,13 @@
 .do-disp{
 	display: none !important;
 }
+
+.plus-button{
+	border-radius:20px;
+	background-color: #eeeeee;
+}
+
+.plus-button :hover{
+	border-radius:20px;
+	background-color: #dddddd;
+}

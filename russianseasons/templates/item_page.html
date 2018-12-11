@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load thumbnail %}
+{% load static %}
 
 {% block title %}{{item.sub_name}} – {{item.price}} руб{% endblock %}
 {% block description %}{{item.description}}{% endblock %}
@@ -35,10 +36,21 @@
 				{{item.name}}
 			</h1>
 		</div>
-
 		<div class="s-content__media col-full">
-			<div class="s-content__post-thumb">
-				<img src="{{item.image.url}}" class="block-center" style="display:block;margin:auto">
+			<div class="s-content__post-thumb" style="font-size: 0;">
+				{% if item.main_image %}
+					<img src="{{item.main_image.file.url}}" class="block_center" style="display:block;margin:auto" id="main_image" alt="{{item.name}}">
+				{% else %}
+					<img src="{% static 'images/favicon/favicon228.png' %}" class="block_center" alt="{{item.name}}">
+				{% endif %}
+				{% for image in item.small_images.all %}
+					<a href="javascript:to_main_image({{image.id}})">
+						<div class="item-small-images" style="width:calc(100% / ({{item.images.count}} - 1))">
+							<img src="{{image.file.url}}" class="" id="image_{{image.id}}">
+						</div>
+					</a>
+				{% endfor %}
+
 			</div>
 		</div> <!-- end s-content__media -->
 		<div class="col-six">

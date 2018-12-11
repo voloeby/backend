@@ -15,6 +15,7 @@ urlpatterns = [
 	path('shop/item/new', views.NewItem.as_view(), name='new_item_url'),
 	path('shop/colors/new', views.NewColor.as_view(), name='new_color_url'),
 	path('shop/sizes/new', views.NewSize.as_view(), name='new_size_url'),
+	path('shop/item/<int:id>/item_image', views.ItemImage.as_view(), name='admin_item_image_url'),
 	path('shop/item/edit/<int:id>', views.EditItem.as_view(), name='edit_item_url'),
 	path('shop/item/delete/<int:id>', views.DelItem.as_view(), name='delete_item_url'),
 	path('blog', views.BlogView.as_view(), name='admin_blog_url'),

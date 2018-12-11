@@ -3,6 +3,32 @@
 	margin:auto;
 }
 
+.mt-2{
+	margin-top: 0.5rem;
+}
+
+.item-small-images{
+	/* height:20vh; */
+	display:inline-block;
+	margin: 0;
+	padding: 0;
+	align-self: flex-start;
+	font-size: 0;
+	/* vertical-align: top; */
+	/* margin-top: auto; */
+}
+
+.item-small-images img{
+	font-size: 0;
+	white-space: nowrap;
+	/* height: 20vh; */
+	width:100% !important;
+	vertical-align: top;
+	align-self: flex-start;
+}
+
+.i
+
 h1{
 	color: rgba(0, 0, 0, 0.8);
 }

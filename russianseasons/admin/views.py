@@ -1,3 +1,4 @@
+import json
 from django.shortcuts import render
 from django.urls import reverse
 # from django.views.generic import View
@@ -390,5 +391,23 @@ class NewArtPage(BaseAdminView):
 		print(Art.objects.all())
 
 		obj = get_object_or_404(Art, id=id)
+		obj.delete()
+		return HttpResponse('ok')
+
+class ItemImage(BaseAdminView):
+	def post(self, request, id):
+		item = get_object_or_404(ItemPrototype, id=id)
+		form = ImageForm(request.POST, request.FILES)
+		if form.is_valid():
+			obj = form.save()
+			item.images.add(obj)
+			path = obj.file.url
+			return HttpResponse(json.dumps({'image': path, 'id': obj.id}))
+		else:
+			print(form.errors)
+		# return HttpResponse({})
+	def delete(self, request, id):
+		image_id = request.body.decode("utf-8").split('&')[0].split('=')[1]
+		obj = get_object_or_404(Image, id=image_id)
 		obj.delete()
 		return HttpResponse('ok')

@@ -97,3 +97,12 @@ function change_ch(){
 	}
 }
 // span.click(()=>span.text('е'),()=>span.text('а'));
+
+function to_main_image(image_id){
+	var img = $('#image_'+image_id);
+	var main_img = $('#main_image');
+	var main_image_url = main_img.attr('src');
+	console.log(main_image_url);
+	main_img.attr('src', img.attr('src'));
+	img.attr('src', main_image_url);
+}
