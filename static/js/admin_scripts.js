@@ -79,12 +79,3 @@ function del_image(image_id){
 		}
 	})
 }
-
-
-function to_main_image(image_id){
-	var img = $('#'+image_id);
-	var main_img = $('#main_image');
-	var main_image_url = main_img.attr('src');
-	main_img.attr('src', img.attr('src'));
-	img.attr('src', main_image_url);
-}

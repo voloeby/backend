@@ -9,6 +9,4 @@ def get_storage(*args):
 	res = {}
 	for item in objects:
 		res[item.key] = item.value
-		print(item.key, item.value)
-	print(res['meta_art_description'])
 	return res

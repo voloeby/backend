@@ -134,7 +134,6 @@ class EditItem(BaseAdminView):
 		obj = get_object_or_404(ItemPrototype, id=id)
 		form = ItemForm(request.POST, request.FILES, instance=obj)
 		if form.is_valid():
-			print(form['image'])
 			form.save()
 			return HttpResponseRedirect(reverse('admin_shop_url'))
 		else:
@@ -388,8 +387,6 @@ class NewArtPage(BaseAdminView):
 			context['form'] = form
 			return render(request, self.template_name, context)
 	def delete(self, request, id):
-		print(Art.objects.all())
-
 		obj = get_object_or_404(Art, id=id)
 		obj.delete()
 		return HttpResponse('ok')
@@ -404,8 +401,7 @@ class ItemImage(BaseAdminView):
 			path = obj.file.url
 			return HttpResponse(json.dumps({'image': path, 'id': obj.id}))
 		else:
-			print(form.errors)
-		# return HttpResponse({})
+			raise Http404
 	def delete(self, request, id):
 		image_id = request.body.decode("utf-8").split('&')[0].split('=')[1]
 		obj = get_object_or_404(Image, id=image_id)

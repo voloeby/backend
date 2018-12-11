@@ -40,7 +40,5 @@ class ItemView(View):
 		order.email = request.POST['email']
 		order.city = request.POST['city']
 		order.items.add(item)
-		print(request.user)
-		# order.user = request.user
 		order.save()
 		return HttpResponse('ok')

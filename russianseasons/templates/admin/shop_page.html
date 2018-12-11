@@ -36,7 +36,15 @@
 				<li class="list-group-item" id="{{item.id}}">
 					<div class="row">
 						<div class="col-2">
-							<img src="{{item.image.url}}" alt="" class="w-100">
+							<a href="{% url 'edit_item_url' item.id %}">
+								{% if item.images.count > 0 %}
+									{% with item.images.all|first as image %}
+										<img src="{{ image.file.url }}" alt="{{item.name}}" class="w-100">
+									{% endwith %}
+								{% else %}
+									<img src="{% static 'images/favicon/favicon.png' %}" alt="{{item.name}}" class="w-100">
+								{% endif %}
+							</a>
 						</div>
 						<div class="col">
 							<h3>{{item.name}}</h3>

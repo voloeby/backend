@@ -43,7 +43,7 @@ class ItemForm(forms.ModelForm):
 	sizes = forms.ModelMultipleChoiceField(queryset=Size.objects.all(), widget=SizeCheckboxWidget(), label='Размеры:')
 	class Meta:
 		model = ItemPrototype
-		fields = ['name', 'sub_name', 'description', 'price', 'colors', 'sizes', 'image']
+		fields = ['name', 'sub_name', 'description', 'price', 'colors', 'sizes']
 		widgets = {
 			'name': forms.widgets.TextInput(attrs={'class': 'form-control'}),
 			'sub_name': forms.widgets.TextInput(attrs={'class': 'form-control'}),

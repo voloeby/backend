@@ -27,7 +27,7 @@ class ItemPrototype(models.Model):
 	categories = models.ManyToManyField(Category)
 	images = models.ManyToManyField(Image, related_name='item')
 	# main_image = models.OneToOneField(Image, on_delete=models.CASCADE, related_name='item')
-	image = models.ImageField(upload_to='img/items/')
+	# image = models.ImageField(upload_to='img/items/')
 	sizes = models.ManyToManyField(Size)
 	name = models.CharField(max_length = 1000)
 	sub_name = models.CharField(max_length = 1000, default='')
