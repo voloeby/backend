@@ -186,6 +186,44 @@ class LoginPage(View):
 			context['error_message'] = 'Неверно заполнена форма.' + str(form.errors)
 			return render(request, self.template_name, self.context)
 
+class SignInPage(View):
+	template_name = 'admin/signin_page.html'
+	context = {'signin_form': SignInForm()}
+	def get(self, request):
+		if request.user.is_authenticated:
+			return HttpResponseRedirect(reverse('admin_shop_url'))
+		return render(request, self.template_name, self.context)
+
+	def post(self, request):
+		context = {'signin_form': SignInForm()}
+		form =SignInForm(request.POST)
+		if form.is_valid():
+			user = None
+			try:
+				user = Admin.objects.get(username=form.cleaned_data['username'])
+			except Admin.DoesNotExist:
+				user = None
+			print(user)
+			if user != None:
+				context['error'] = True
+				context['error_message'] = 'Неуникальный username.'
+				context['signin_form'] = SignInForm(request.POST)
+				return render(request, self.template_name, context)
+			print(form.cleaned_data)
+			user = Admin.objects.create_user(form.cleaned_data['username'], password=form.cleaned_data['password'], first_name=form.cleaned_data['first_name'])
+			# user = authenticate(request, username=form.cleaned_data['username'], password=form.cleaned_data['password'])
+			if user is None:
+				context['error'] = True
+				context['error_message'] = 'Не удалось создать пользователя.'
+				return render(request, self.template_name, context)
+			else:
+				login(request, user)
+				return HttpResponseRedirect(reverse('admin_shop_url'))
+		else:
+			context['error'] = True
+			context['error_message'] = 'Неверно заполнена форма.' + str(form.errors)
+			return render(request, self.template_name, context)
+
 class ShopPage(BaseAdminView):
 	template_name = 'admin/shop_page.html'
 	def get(self, request):
@@ -407,3 +445,22 @@ class ItemImage(BaseAdminView):
 		obj = get_object_or_404(Image, id=image_id)
 		obj.delete()
 		return HttpResponse('ok')
+
+class FinancesPage(BaseAdminView):
+	template_name = 'admin/finance_page.html'
+	def post(self, request):
+		form = FinanceForm(request.POST)
+		if form.is_valid():
+			obj = form.save(commit=False)
+			obj.user = request.user
+			obj.save()
+			return HttpResponse('ok')
+		else:
+			return HttpResponse('bad form')
+	def get(self, request):
+		context = {}
+		context['form'] = FinanceForm()
+		context['finances'] = FinanceItem.objects.all()
+		if FinanceItem.objects.count() > 0:
+			context['total'] = FinanceItem.total()
+		return render(request, self.template_name, context)

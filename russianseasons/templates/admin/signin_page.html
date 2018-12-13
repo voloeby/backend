@@ -11,14 +11,14 @@
 	<div class="" style="min-height:87.5vh">
 		<div class="container">
 			<div class="container">
-				<h2>Вход</h2>
+				<h2>Регистрация</h2>
 				{% if error %}
 					<div class="alert alert-danger">{{error_message}}</div>
 				{% endif %}
-				<form class="" action="{% url 'login_url' %}" method="post">
+				<form class="" action="{% url 'signin_url' %}" method="post">
 					{% csrf_token %}
-					{{login_form.as_p}}
-					<button type="submit" name="button" class="btn btn-primary">Войти</button>
+					{{signin_form.as_p}}
+					<button type="submit" name="button" class="btn btn-primary">Зарегистрироваться</button>
 				</form>
 			</div>
 		</div>

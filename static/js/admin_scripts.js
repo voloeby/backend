@@ -79,3 +79,53 @@ function del_image(image_id){
 		}
 	})
 }
+
+var is_income = null;
+
+function add_finance(str){
+	if(str == '+') is_income = true;
+	else is_income = false;
+	console.log($('#pop_up_window'));
+	$('#pop_up_window').css('display', 'block');
+	console.log($('#pop_up_window').css('display'));
+}
+
+function send_finance(){
+	var csrf = $('#csrf_token').html();
+	var data = $('#new_finance_form').serializeArray().reduce((obj, item)=>{
+		obj[item.name] = item.value;
+    	return obj;
+	},{});
+	data.is_income = is_income;
+	$.ajax({
+		url: '/admin/finances',
+		headers:{ 'X-CSRFToken':csrf},
+		method: 'post',
+		data: data,
+		success: (res)=>{
+			if (res == 'ok') {
+				$('#pop_up_window').css('display', 'none');
+				document.location.href = '/admin/finances';
+			}
+		}
+	});
+}
+
+function del_finance(fin_id){
+	var csrf = $('#csrf_token').html();
+	$.ajax({
+		url: '/admin/finances',
+		headers:{ 'X-CSRFToken':csrf},
+		method: 'delete',
+		data: fin_id,
+		success: (res)=>{
+			if (res == 'ok') {
+				$('#'+fin_id).remove();
+			}
+		}
+	});
+}
+
+function close_win(tag_id){
+	$('#'+tag_id).css('display', 'none');
+}

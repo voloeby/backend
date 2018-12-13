@@ -8,8 +8,8 @@
 	vertical-align:middle;
 }
 
-.do-disp{
-	display: none !important;
+.no-disp{
+	display: none;
 }
 
 .plus-button{
@@ -20,4 +20,30 @@
 .plus-button :hover{
 	border-radius:20px;
 	background-color: #dddddd;
+}
+
+.pop-up-win{
+	background-color: #ffffff;
+	position: absolute;
+	left:10vw;
+	top:20vh;
+	width:80vw;
+}
+
+.dark-back{
+	position: absolute;
+	left:0;
+	top:0;
+	width:100vw;
+	height:100vh;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.fin-li div div{
+	text-align: center;
+}
+
+.fin-total{
+	display: inline-block;
+	float: right;
 }

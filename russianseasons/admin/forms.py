@@ -26,6 +26,12 @@ class CheckboxWidget(forms.CheckboxSelectMultiple):
 		ul.a.append(self.button_text)
 		return soup.__str__()
 
+class SignInForm(forms.Form):
+	first_name = forms.CharField(widget=forms.TextInput(attrs={'autofocus': True, 'class': 'form-control'}))
+	username = UsernameField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+	password = forms.CharField(label=("Password"), strip=False, widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+
+
 class ColorCheckboxWidget(CheckboxWidget):
 	button_text = 'Добавить цвет'
 	url_name = 'new_color_url'
@@ -100,3 +106,18 @@ class ImageForm(forms.ModelForm):
 	class Meta:
 		model = Image
 		fields = ['file']
+
+class FinanceForm(forms.ModelForm):
+	class Meta:
+		model = FinanceItem
+		fields = ['money', 'text', 'is_income']
+		widgets = {
+			'money': forms.NumberInput(attrs={'class': 'form-control', 'required': '', 'min':'0'}),
+			'text': forms.Textarea(attrs={'class': 'form-control', 'rows': '7',}),
+			'is_income': forms.CheckboxInput(attrs={'style': 'display:none'}),
+		}
+		labels = {
+			'money': 'Сколько:',
+			'text': 'Комментарий:',
+			'is_income': '',
+		}
