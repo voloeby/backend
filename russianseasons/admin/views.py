@@ -51,6 +51,9 @@ class BaseAdminView:
 		def view(request, *args, **kwargs):
 			if not request.user.is_authenticated:
 				raise Http404
+			# if not request.user.is_active:
+			# 	logout(request)
+			# 	raise Http404
 			self = cls(**initkwargs)
 			if hasattr(self, 'get') and not hasattr(self, 'head'):
 				self.head = self.get
@@ -203,15 +206,12 @@ class SignInPage(View):
 				user = Admin.objects.get(username=form.cleaned_data['username'])
 			except Admin.DoesNotExist:
 				user = None
-			print(user)
 			if user != None:
 				context['error'] = True
 				context['error_message'] = 'Неуникальный username.'
 				context['signin_form'] = SignInForm(request.POST)
 				return render(request, self.template_name, context)
-			print(form.cleaned_data)
 			user = Admin.objects.create_user(form.cleaned_data['username'], password=form.cleaned_data['password'], first_name=form.cleaned_data['first_name'])
-			# user = authenticate(request, username=form.cleaned_data['username'], password=form.cleaned_data['password'])
 			if user is None:
 				context['error'] = True
 				context['error_message'] = 'Не удалось создать пользователя.'
@@ -464,3 +464,27 @@ class FinancesPage(BaseAdminView):
 		if FinanceItem.objects.count() > 0:
 			context['total'] = FinanceItem.total()
 		return render(request, self.template_name, context)
+
+class AdminPage(BaseAdminView):
+	template_name = 'admin/admin_page.html'
+	def post(self, request):
+		pass
+	def get(self, request):
+		context = {}
+		context['users'] = User.objects.all()
+		return render(request, self.template_name, context)
+
+class UsersPage(BaseAdminView):
+	def patch(self, request):
+		print(request.POST)
+		return HttpResponse('ok')
+	def post(self, request):
+		if request.POST['type'] == 'is_active':
+			try:
+				user = User.objects.get(id=request.POST['user_id'])
+				user.profile.is_active = not user.profile.is_active
+				user.save()
+			except Exception as e:
+				print(e)
+				pass
+		return HttpResponse('ok')

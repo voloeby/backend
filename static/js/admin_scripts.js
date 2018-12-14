@@ -12,7 +12,14 @@ function upd_show(id){
 	var loc = $('#edit_link_'+id).attr('href');
 	var csrf = $('#csrf_token').html();
 	$.ajax({url:loc, method:'patch', headers:{ 'X-CSRFToken':csrf}, data:{'csrfmiddlewaretoken':csrf}, success: function(res){
-		// $("#"+id).remove();
+	}});
+}
+
+function upd_user(user_id){
+	var loc = '/admin/users/update'
+	var csrf = $('#csrf_token').html();
+	$.ajax({url:loc, method:'post', headers:{ 'X-CSRFToken':csrf}, data:{'user_id':user_id, 'type': 'is_active'}, success: function(res){
+
 	}});
 }
 

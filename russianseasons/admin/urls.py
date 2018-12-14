@@ -8,6 +8,8 @@ from russianseasons.admin import views
 
 urlpatterns = [
 	# path('', views.admin_page, name='admin_url'),
+	path('users/update', views.UsersPage.as_view(), name='admin_user_url'),
+	path('admin', views.AdminPage.as_view(), name='admin_url'),
 	path('finances', views.FinancesPage.as_view(), name='admin_finance_url'),
 	path('login', views.LoginPage.as_view(), name='login_url'),
 	path('signin', views.SignInPage.as_view(), name='signin_url'),
