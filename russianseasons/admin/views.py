@@ -482,6 +482,10 @@ class UsersPage(BaseAdminView):
 		if request.POST['type'] == 'is_active':
 			try:
 				user = User.objects.get(id=request.POST['user_id'])
+				p = Profile()
+				p.save()
+				p.user = user
+				p.save()
 				user.profile.is_active = not user.profile.is_active
 				user.save()
 			except Exception as e:
