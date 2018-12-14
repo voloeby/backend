@@ -51,6 +51,9 @@ class BaseAdminView:
 		def view(request, *args, **kwargs):
 			if not request.user.is_authenticated:
 				raise Http404
+			if not request.user.profile.is_active:
+				logout(request)
+				raise Http404
 			self = cls(**initkwargs)
 			if hasattr(self, 'get') and not hasattr(self, 'head'):
 				self.head = self.get
@@ -482,14 +485,6 @@ class UsersPage(BaseAdminView):
 		if request.POST['type'] == 'is_active':
 			try:
 				user = User.objects.get(id=request.POST['user_id'])
-				# user.delete()
-				# for user in User.objects.all():
-				# 	print(user)
-					# user.delete()
-				# p = Profile()
-				# p.save()
-				# p.user = user
-				# p.save()
 				user.profile.is_active = not user.profile.is_active
 				user.save()
 			except User.DoesNotExist:
