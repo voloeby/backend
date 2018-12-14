@@ -486,7 +486,7 @@ class UsersPage(BaseAdminView):
 				p.save()
 				p.user = user
 				p.save()
-				user.profile.is_active = not user.profile.is_active
+				# user.profile.is_active = not user.profile.is_active
 				user.save()
 			except Exception as e:
 				print(e)
