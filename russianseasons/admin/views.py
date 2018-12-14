@@ -51,9 +51,6 @@ class BaseAdminView:
 		def view(request, *args, **kwargs):
 			if not request.user.is_authenticated:
 				raise Http404
-			# if not request.user.is_active:
-			# 	logout(request)
-			# 	raise Http404
 			self = cls(**initkwargs)
 			if hasattr(self, 'get') and not hasattr(self, 'head'):
 				self.head = self.get
@@ -203,15 +200,18 @@ class SignInPage(View):
 		if form.is_valid():
 			user = None
 			try:
-				user = Admin.objects.get(username=form.cleaned_data['username'])
-			except Admin.DoesNotExist:
+				user = User.objects.get(username=form.cleaned_data['username'])
+			except User.DoesNotExist:
 				user = None
+			print(user)
 			if user != None:
 				context['error'] = True
 				context['error_message'] = 'Неуникальный username.'
 				context['signin_form'] = SignInForm(request.POST)
 				return render(request, self.template_name, context)
-			user = Admin.objects.create_user(form.cleaned_data['username'], password=form.cleaned_data['password'], first_name=form.cleaned_data['first_name'])
+			print(form.cleaned_data)
+			user = User.objects.create_user(form.cleaned_data['username'], password=form.cleaned_data['password'], first_name=form.cleaned_data['first_name'])
+			# user = authenticate(request, username=form.cleaned_data['username'], password=form.cleaned_data['password'])
 			if user is None:
 				context['error'] = True
 				context['error_message'] = 'Не удалось создать пользователя.'
@@ -482,13 +482,15 @@ class UsersPage(BaseAdminView):
 		if request.POST['type'] == 'is_active':
 			try:
 				user = User.objects.get(id=request.POST['user_id'])
-				p = Profile()
-				p.save()
-				p.user = user
-				p.save()
-				# user.profile.is_active = not user.profile.is_active
+				# for user in User.objects.all():
+				# 	print(user)
+					# user.delete()
+				# p = Profile()
+				# p.save()
+				# p.user = user
+				# p.save()
+				user.profile.is_active = not user.profile.is_active
 				user.save()
-			except Exception as e:
-				print(e)
-				pass
+			except User.DoesNotExist:
+				raise Http404
 		return HttpResponse('ok')
