@@ -482,7 +482,7 @@ class UsersPage(BaseAdminView):
 		if request.POST['type'] == 'is_active':
 			try:
 				user = User.objects.get(id=request.POST['user_id'])
-				user.delete()
+				# user.delete()
 				# for user in User.objects.all():
 				# 	print(user)
 					# user.delete()
@@ -490,8 +490,8 @@ class UsersPage(BaseAdminView):
 				# p.save()
 				# p.user = user
 				# p.save()
-				# user.profile.is_active = not user.profile.is_active
-				# user.save()
+				user.profile.is_active = not user.profile.is_active
+				user.save()
 			except User.DoesNotExist:
 				raise Http404
 		return HttpResponse('ok')
