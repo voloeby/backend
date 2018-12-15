@@ -49,17 +49,19 @@ class ItemForm(forms.ModelForm):
 	sizes = forms.ModelMultipleChoiceField(queryset=Size.objects.all(), widget=SizeCheckboxWidget(), label='Размеры:')
 	class Meta:
 		model = ItemPrototype
-		fields = ['name', 'sub_name', 'description', 'price', 'colors', 'sizes']
+		fields = ['name', 'category', 'sub_name', 'description', 'price', 'colors', 'sizes']
 		widgets = {
 			'name': forms.widgets.TextInput(attrs={'class': 'form-control'}),
 			'sub_name': forms.widgets.TextInput(attrs={'class': 'form-control'}),
 			'description': forms.widgets.Textarea(attrs={'class': 'form-control',}),
-			'price': forms.widgets.NumberInput(attrs={'class': 'form-control',})
+			'price': forms.widgets.NumberInput(attrs={'class': 'form-control',}),
+			'category': forms.widgets.Select(attrs={'class': 'form-control',}),
 			# 'colors': forms.widgets.CheckboxInput(attrs={'class': 'form-control',}),
 
 		}
 		labels = {
 			'name': 'Название:',
+			'category': 'Категория:',
 			'sub_name': 'Название кратко',
 			'description': 'Описание:',
 			'colors': 'Цвета:',
@@ -120,4 +122,17 @@ class FinanceForm(forms.ModelForm):
 			'money': 'Сколько:',
 			'text': 'Комментарий:',
 			'is_income': '',
+		}
+
+class CategoryForm(forms.ModelForm):
+	class Meta:
+		model = Category
+		fields = ['name', 'description']
+		widgets = {
+			'name': forms.TextInput(attrs={'class': 'form-control', 'required': ''}),
+			'description': forms.Textarea(attrs={'class': 'form-control', 'rows': '7',}),
+		}
+		labels = {
+			'name': 'Название:',
+			'description': 'Описание:',
 		}

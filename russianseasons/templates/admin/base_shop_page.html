@@ -1,0 +1,18 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+
+{% block content %}
+	<ul class="nav nav-tabs nav-justified">
+		{% url 'admin_shop_url' as products_url %}
+		{% url 'admin_categories_url' as categories_url %}
+		<li class="nav-item">
+    		<a class="nav-link {% if request.path == products_url %}active{% endif %}" href="{{products_url}}">Товары</a>
+  		</li>
+		<li class="nav-item">
+    		<a class="nav-link {% if request.path == categories_url %}active{% endif %}" href="{{categories_url}}">Категории</a>
+  		</li>
+	</ul>
+	{% block content-2 %}
+
+	{% endblock %}
+{% endblock %}

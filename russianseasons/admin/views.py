@@ -490,3 +490,45 @@ class UsersPage(BaseAdminView):
 			except User.DoesNotExist:
 				raise Http404
 		return HttpResponse('ok')
+
+class NewCategoryPage(BaseAdminView):
+	template_name = 'admin/category_page.html'
+	def get(self, request, id=None):
+		context = {}
+		category = None
+		context['header'] = 'Добавить категорию'
+		if id:
+			try:
+				category = Category.objects.get(id=id)
+				context['header'] = 'Изменить категорию'
+			except Category.DoesNotExist:
+				raise Http404
+
+
+		context['form'] = CategoryForm(instance=category)
+		return render(request, self.template_name, context)
+
+	def post(self, request, id=None):
+		context = {}
+		category = None
+		if id:
+			try:
+				category = Category.objects.get(id=id)
+				context['header'] = 'Изменить категорию'
+			except Category.DoesNotExist:
+				raise Http404
+		form = CategoryForm(request.POST, instance=category)
+		if form.is_valid():
+			form.save()
+			return HttpResponseRedirect(reverse('admin_categories_url'))
+		else:
+			context['error'] = True
+			context['error_message'] = 'Неверно заполнена форма.' + str(form.errors)
+			return render(request, self.template_name, context)
+
+class CategoriesPage(BaseAdminView):
+	template_name = 'admin/categories_page.html'
+	def get(self, request):
+		context = {}
+		context['categories'] = Category.objects.all()
+		return render(request, self.template_name, context)

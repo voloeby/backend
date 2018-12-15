@@ -1,0 +1,31 @@
+{% extends 'admin/base_shop_page.html' %}
+{% load static %}
+
+{% block content-2 %}
+	<div class="container">
+		<h1>Категории</h1>
+		<a href="{% url 'admin_new_category_url' %}">
+			<button class="btn btn-primary">Добавить категорию</button>
+		</a>
+		<ul class="list-group list-group-flush mt-2">
+			{% for item in categories %}
+				<li class="list-group-item" id="{{item.id}}">
+					<div class="row">
+						<div class="col-4">
+							<h3>{{item.name}}</h3>
+						</div>
+						<div class="col">
+							{{item.description|safe}}
+						</div>
+						<div class="col-2">
+							<a href="{% url 'admin_edit_category_url' item.id %}">
+								<button class="btn btn-success">Изменить</button>
+							</a>
+						</div>
+					</div>
+
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+{% endblock %}

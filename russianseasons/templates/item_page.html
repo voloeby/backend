@@ -72,9 +72,11 @@
 		<div class="col-full">
 			Цена: <b class="h2">{{item.price}}</b> руб.
 		</div>
-
 		<div class="col-full s-content__main">
 			<p>{{item.description|safe}}</p>
+		</div>
+		<div class="col-full s-content__main">
+			<p>{{item.category.description|safe}}</p>
 		</div>
 		<div class="col-full">
 			<div>

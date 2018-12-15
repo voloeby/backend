@@ -7,6 +7,9 @@ from django.dispatch import receiver
 
 class Category(models.Model):
 	name = models.CharField(max_length=1000)
+	description = models.TextField(default='')
+	def __str__(self):
+		return self.name
 
 class Image(models.Model):
 	file = models.ImageField(upload_to='img/items/')
@@ -26,7 +29,7 @@ class Size(models.Model):
 
 
 class ItemPrototype(models.Model):
-	categories = models.ManyToManyField(Category)
+	category = models.ForeignKey(Category, null=True, default=None, on_delete=models.SET_NULL, blank=True, related_name='items')
 	images = models.ManyToManyField(Image, related_name='item')
 	# main_image = models.OneToOneField(Image, on_delete=models.CASCADE, related_name='item')
 	# image = models.ImageField(upload_to='img/items/')
