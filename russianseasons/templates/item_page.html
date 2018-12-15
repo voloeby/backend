@@ -74,7 +74,7 @@
 		</div>
 
 		<div class="col-full s-content__main">
-			<p>{{item.description}}</p>
+			<p>{{item.description|safe}}</p>
 		</div>
 		<div class="col-full">
 			<div>
@@ -89,7 +89,7 @@
 				<div class="alert-box alert-box--error hideit">
 		            <p id='error_message'>asd</p>
 		            <i class="fa fa-times alert-box__close"></i>
-		        </div> <!-- end error -->
+		        </div>
 			</div>
 			<div class="col-full" id='success_box' style="display:none">
 				<div class="alert-box alert-box--success hideit">

@@ -11,7 +11,10 @@
 							<div class="col">
 								{{user.username}}
 							</div>
-							<div class="col-2">
+							<div class="col-4">
+								{{user.last_login|date:'d.m.Y'}}
+							</div>
+							<div class="col-1">
 								<input type="checkbox" {% if user.profile.is_active %}checked{% endif %} onclick="javascript:upd_user({{user.id}})">
 							</div>
 						</div>
