@@ -30,6 +30,10 @@
 	width:80vw;
 }
 
+.pop-up-win div h2{
+	text-align: center;
+}
+
 .dark-back{
 	position: absolute;
 	left:0;
@@ -46,4 +50,8 @@
 .fin-total{
 	display: inline-block;
 	float: right;
+}
+
+#pop_up_window_delete div{
+	height: 60vh;
 }

@@ -122,7 +122,7 @@ class NewItem(BaseAdminView):
 		else:
 			context['error'] = True
 			context['error_message'] = 'Неверно заполнена форма.' + str(form.errors)
-			context['form'] = ItemForm(instance=obj)
+			context['form'] = form
 			return render(request, self.template_name, context)
 
 

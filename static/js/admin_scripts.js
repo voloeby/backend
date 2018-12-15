@@ -177,3 +177,12 @@ function move_down_product(product_id){
 		}
 	});
 }
+
+function really_delete(func, arg=null){
+	$('#pop_up_window_delete').css('display', 'block');
+	$('.dark-back').focus();
+	$('#delete_button').click(()=>{
+		func(arg);
+		$('#pop_up_window_delete').css('display', 'none');
+	});
+}
