@@ -70,7 +70,16 @@ $(()=>{
 			processData: false,
 			contentType: false
 		});
-	})
+	});
+	$.fn.moveUp = (tag_id)=>{;
+		before = $('#'+tag_id).prev();
+		$('#'+tag_id).insertBefore(before);
+	}
+
+	$.fn.moveDown = (tag_id)=>{
+		after = $('#'+tag_id).next();
+		$('#'+tag_id).insertAfter(after);
+	}
 });
 
 
@@ -133,6 +142,38 @@ function del_finance(fin_id){
 	});
 }
 
+
+
 function close_win(tag_id){
 	$('#'+tag_id).css('display', 'none');
+}
+
+function move_up_product(product_id){
+	var csrf = $('#csrf_token').html();
+	$.ajax({
+		url: '/admin/shop/item/edit/'+product_id+'?type=move_up',
+		headers:{ 'X-CSRFToken':csrf},
+		method: 'patch',
+		data: {},
+		success: (res)=>{
+			if (res != 'no_change'){
+				$('#'+product_id).moveUp(product_id)
+			}
+		}
+	});
+}
+
+function move_down_product(product_id){
+	var csrf = $('#csrf_token').html();
+	$.ajax({
+		url: '/admin/shop/item/edit/'+product_id+'?type=move_down',
+		headers:{ 'X-CSRFToken':csrf},
+		method: 'patch',
+		data: {},
+		success: (res)=>{
+			if (res != 'no_change'){
+				$('#'+product_id).moveDown(product_id);
+			}
+		}
+	});
 }

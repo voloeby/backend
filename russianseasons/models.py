@@ -40,7 +40,9 @@ class ItemPrototype(models.Model):
 	colors = models.ManyToManyField(Color)
 	price = models.IntegerField(null=True)
 	show = models.BooleanField(default=False)
-
+	number = models.IntegerField(default=0)
+	class Meta:
+		ordering = ['number']
 
 class Item(models.Model):
 	color = models.ForeignKey(Color, on_delete=models.CASCADE)

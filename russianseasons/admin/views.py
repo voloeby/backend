@@ -115,7 +115,9 @@ class NewItem(BaseAdminView):
 		context = {}
 		form = ItemForm(request.POST, request.FILES)
 		if form.is_valid():
-			obj = form.save()
+			obj = form.save(commit=False)
+			obj.number = ItemPrototype.objects.count()
+			obj.save()
 			return HttpResponseRedirect(reverse('admin_shop_url'))
 		else:
 			context['error'] = True
@@ -150,8 +152,40 @@ class EditItem(BaseAdminView):
 		return HttpResponse('ok')
 	def patch(self, request, id):
 		obj = get_object_or_404(ItemPrototype, id=id)
-		obj.show = not obj.show
-		obj.save()
+		if request.GET.get('type', None) == 'show':
+			obj.show = not obj.show
+			obj.save()
+		elif request.GET.get('type', None) == 'move_up':
+			number = obj.number
+			if number == 1:
+				return HttpResponse('no_change')
+			try:
+				prev = ItemPrototype.objects.get(number=number-1)
+				prev.number = number
+				prev.save()
+				obj.number = number-1
+				obj.save()
+				return HttpResponse('ok')
+			except ItemPrototype.DoesNotExist:
+				obj.number = number-1
+				obj.save()
+				return HttpResponse('no_change')
+		elif request.GET.get('type', None) == 'move_down':
+			number = obj.number
+			if number == ItemPrototype.objects.count():
+				return HttpResponse('no_change')
+			try:
+				next = ItemPrototype.objects.get(number=number+1)
+				next.number = number
+				next.save()
+				obj.number = number+1
+				obj.save()
+				return HttpResponse('ok')
+			except ItemPrototype.DoesNotExist:
+				obj.number = number+1
+				obj.save()
+				print(obj.number)
+				return HttpResponse('no_change')
 		return HttpResponse('ok')
 
 class DelItem(BaseAdminView):

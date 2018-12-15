@@ -30,6 +30,9 @@
 							Удалить
 						</span>
 					</div>
+					<div class="col-1">
+
+					</div>
 				</div>
 			</li>
 			{% for item in items %}
@@ -57,13 +60,23 @@
 						</div>
 						<div class="col-1">
 							<a href="{% url 'edit_item_url' item.id %}" class="" id='edit_link_{{item.id}}'>
-								<button type="button" name="button" class="btn btn-success">Edit</button>
+								<button type="button" name="button" class="btn btn-success container-fluid">Edit</button>
 							</a>
 						</div>
 						<div class="col-1">
 							<a href="javascript:del_item({{item.id}})" class="">
-								<button type="button" name="button" class="btn btn-danger">Del</button>
+								<button type="button" name="button" class="btn btn-danger container-fluid">Del</button>
 							</a>
+						</div>
+						<div class="col-1">
+							<div class="row">
+								<div class="col">
+									<button onclick="javascript:move_up_product({{item.id}})" class="btn btn-primary container-fluid"><i class="fas fa-arrow-up"></i></button>
+								</div>
+								<div class="col mt-2">
+									<button onclick="javascript:move_down_product({{item.id}})" class="btn btn-primary container-fluid"><i class="fas fa-arrow-down"></i></button>
+								</div>
+							</div>
 						</div>
 					</div>
 
