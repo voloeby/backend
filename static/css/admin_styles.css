@@ -24,10 +24,11 @@
 
 .pop-up-win{
 	background-color: #ffffff;
-	position: absolute;
+	position: fixed;
 	left:10vw;
 	top:20vh;
 	width:80vw;
+	z-index: 2;
 }
 
 .pop-up-win div h2{
@@ -35,12 +36,13 @@
 }
 
 .dark-back{
-	position: absolute;
+	position: fixed;
 	left:0;
 	top:0;
 	width:100vw;
-	height:100vh;
+	height:100%;
 	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 1;
 }
 
 .fin-li div div{
@@ -53,5 +55,4 @@
 }
 
 #pop_up_window_delete div{
-	height: 60vh;
 }
