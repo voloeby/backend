@@ -26,6 +26,12 @@
 	<meta name="og:price:amount" content="{{item.price}}">
 	<meta name="og:price:currency" content="RUB">
 
+	<meta itemprop="name" content="{{item.sub_name}}">
+	<meta itemprop="description" content="{{item.description|truncatechars:310}}">
+	<meta itemprop="image" content="https://voloeby.com{% thumbnail item.main_image.file 1000x1000 crop %}">
+
+<!-- Facebook Meta Tags -->
+
 {% endblock %}
 
 {% block content %}
