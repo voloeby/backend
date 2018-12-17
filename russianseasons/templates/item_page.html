@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block title %}{{item.sub_name}} – {{item.price}} руб{% endblock %}
-{% block description %}{{item.description}}{% endblock %}
+{% block description %}{{item.description|truncatechars:310}}{% endblock %}
 
 {% block head %}
 	<meta name="og:title" content="{{item.sub_name}}">

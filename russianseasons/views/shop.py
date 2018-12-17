@@ -8,12 +8,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 def shop_page(request):
 	context = {}
 	template_name = 'shop.html'
-	# for i in ItemPrototype.objects.all():
-	# 	i.delete()
 	context['items'] = ItemPrototype.objects.all()
-	# for item in context['items']:
-	# 	item.image = item.images.all()[0]
-
 	return render(request, template_name, context)
 
 
