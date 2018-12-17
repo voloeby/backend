@@ -152,6 +152,7 @@ class EditItem(BaseAdminView):
 		return HttpResponse('ok')
 	def patch(self, request, id):
 		obj = get_object_or_404(ItemPrototype, id=id)
+		print(request.GET.get('type', None))
 		if request.GET.get('type', None) == 'show':
 			obj.show = not obj.show
 			obj.save()

@@ -53,19 +53,17 @@
 									{% endif %}
 								</a>
 							</div>
+								<div class="entry__text">
+									<div class="entry__header">
+										<h1 class="entry__title"><a href="{% url 'item_url' item.id %}" class="my-font">{{item.name}}</a></h1>
 
-							<div class="entry__text">
-								<div class="entry__header">
-									<h1 class="entry__title"><a href="{% url 'item_url' item.id %}" class="my-font">{{item.name}}</a></h1>
-
+									</div>
+									<div class="entry__meta">
+										<span class="entry__meta-links">
+											<a href="{% url 'item_url' item.id %}">{{item.price}}</a>
+										</span>
+									</div>
 								</div>
-								<div class="entry__meta">
-									<span class="entry__meta-links">
-										<a href="{% url 'item_url' item.id %}">{{item.price}}</a>
-									</span>
-								</div>
-							</div>
-
 						</article>
 					{% endif %}
 				{% endfor %}

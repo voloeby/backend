@@ -9,9 +9,9 @@ function del_item(id){
 }
 
 function upd_show(id){
-	var loc = $('#edit_link_'+id).attr('href');
+	var loc = $('#edit_link_'+id).attr('href') + '?type=show';
 	var csrf = $('#csrf_token').html();
-	$.ajax({url:loc, method:'patch', headers:{ 'X-CSRFToken':csrf}, data:{'csrfmiddlewaretoken':csrf}, success: function(res){
+	$.ajax({url:loc, method:'patch', headers:{ 'X-CSRFToken':csrf}, data:{'type':'show'}, success: function(res){
 	}});
 }
 
