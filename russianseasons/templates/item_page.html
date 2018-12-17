@@ -45,13 +45,13 @@
 		<div class="s-content__media col-full">
 			<div class="s-content__post-thumb" style="font-size: 0;">
 				{% if item.main_image %}
-					<img src="{{item.main_image.file.url}}" class="block_center" style="display:block;margin:auto" id="main_image" alt="{{item.name}}">
+					<img src="{{item.main_image.file.url}}" class="block_center" style="display:block;margin:auto" id="main_image" alt="{{item.sub_name}}" title="{{item.sub_name}}">
 				{% else %}
 					<img src="{% static 'images/favicon/favicon228.png' %}" class="block_center" alt="{{item.name}}">
 				{% endif %}
 				{% for image in item.small_images.all %}
 					<a href="javascript:to_main_image({{image.id}})">
-						<div class="item-small-images" style="width:calc(100% / ({{item.images.count}} - 1))">
+						<div class="item-small-images" style="width:calc(100% / ({{item.images.count}} - 1)); max-width:51%">
 							<img src="{{image.file.url}}" class="" id="image_{{image.id}}">
 						</div>
 					</a>

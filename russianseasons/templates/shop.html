@@ -50,17 +50,16 @@
 								<a href="{% url 'item_url' item.id %}" class="entry__thumb-link">
 									{% if item.images.count > 0 %}
 										{% with item.images.all|first as image %}
-											<img src="{{ image.file.url }}" alt="{{item.name}}">
+											<img src="{{ image.file.url }}" alt="{{item.name}}" title="{{item.sub_name}}">
 										{% endwith %}
 									{% else %}
-										<img src="{% static 'images/favicon/favicon.png' %}" alt="{{item.name}}">
+										<img src="{% static 'images/favicon/favicon.png' %}" alt="{{item.name}}" title="{{item.sub_name}}">
 									{% endif %}
 								</a>
 							</div>
 								<div class="entry__text">
 									<div class="entry__header">
-										<h1 class="entry__title"><a href="{% url 'item_url' item.id %}" class="my-font">{{item.name}}</a></h1>
-
+										<a href="{% url 'item_url' item.id %}" class="my-font"><h2 class="entry__title">{{item.name}}</h1></a>
 									</div>
 									<div class="entry__meta">
 										<span class="entry__meta-links">
