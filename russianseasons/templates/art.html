@@ -8,18 +8,18 @@
 
 {% block head %}
 	<meta name="og:title" content="Творчество">
-	<meta name="og:url" content="http://voloeby.com{{request.path}}">
+	<meta name="og:url" content="https://voloeby.com{{request.path}}">
 	<meta name="og:type" content="article">
 	<meta name="og:locale" content="ru_RU">
 	<meta name="og:description" content="{{storage.meta_art_description}}">
 	{% if photos %}
-	<meta name="og:image" content="http://voloeby.com{% thumbnail photos.first.image 1200x630 crop %}">
+	<meta name="og:image" content="https://voloeby.com{% thumbnail photos.first.image 1200x630 crop %}">
 	<meta name="og:image:width" content="1200">
 	<meta name="og:image:height" content="630">
-	<meta name="og:image" content="http://voloeby.com{% thumbnail photos.first.image 50x50 crop %}">
+	<meta name="og:image" content="https://voloeby.com{% thumbnail photos.first.image 50x50 crop %}">
 	<meta name="og:image:width" content="50">
 	<meta name="og:image:height" content="50">
-	<meta name="og:image" content="http://voloeby.com{% thumbnail photos.first.image 968x630 crop %}">
+	<meta name="og:image" content="https://voloeby.com{% thumbnail photos.first.image 968x630 crop %}">
 	<meta name="og:image:width" content="968">
 	<meta name="og:image:height" content="504">
 	{% endif %}
