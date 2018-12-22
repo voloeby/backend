@@ -7,6 +7,10 @@
 	margin-top: 0.5rem;
 }
 
+.mt-4{
+	margin-top: 1rem;
+}
+
 .item-small-images{
 	/* height:20vh; */
 	display:inline-block;
