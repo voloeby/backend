@@ -2,11 +2,11 @@
 {% load thumbnail %}
 {% load static %}
 
-{% block title %}{{item.sub_name}} – {{item.price}} руб{% endblock %}
+{% block title %}{{item.name}} – {{item.category.price}} руб{% endblock %}
 {% block description %}{{item.description|truncatechars:310}}{% endblock %}
 
 {% block head %}
-	<meta name="og:title" content="{{item.sub_name}}">
+	<meta name="og:title" content="{{item.name}}">
 	<meta name="og:url" content="https://voloeby.com{{request.path}}">
 	<meta name="og:type" content="og:product">
 	<meta name="og:locale" content="ru_RU">
@@ -23,10 +23,10 @@
 	<meta name="og:image" content="https://voloeby.com{% thumbnail item.main_image.file 1000x1000 crop %}">
 	<meta name="og:image:width" content="1000">
 	<meta name="og:image:height" content="1000">
-	<meta name="og:price:amount" content="{{item.price}}">
+	<meta name="og:price:amount" content="{{item.category.price}}">
 	<meta name="og:price:currency" content="RUB">
 
-	<meta itemprop="name" content="{{item.sub_name}}">
+	<meta itemprop="name" content="{{item.name}}">
 	<meta itemprop="description" content="{{item.description|truncatechars:310}}">
 	<meta itemprop="image" content="https://voloeby.com{% thumbnail item.main_image.file 1000x1000 crop %}">
 
@@ -39,13 +39,13 @@
 	<article class="row format-standard" data-aos="fade-up">
 		<div class="s-content__header col-full">
 			<h1 class="s-content__header-title my-font">
-				{{item.name}}
+				{{item.category.name}} "{{item.name}}"
 			</h1>
 		</div>
 		<div class="s-content__media col-full">
 			<div class="s-content__post-thumb" style="font-size: 0;">
 				{% if item.main_image %}
-					<img src="{{item.main_image.file.url}}" class="block_center" style="display:block;margin:auto" id="main_image" alt="{{item.sub_name}}" title="{{item.sub_name}}">
+					<img src="{{item.main_image.file.url}}" class="block_center" style="display:block;margin:auto" id="main_image" alt="{{item.name}}" title="{{item.name}}">
 				{% else %}
 					<img src="{% static 'images/favicon/favicon228.png' %}" class="block_center" alt="{{item.name}}">
 				{% endif %}
@@ -76,7 +76,7 @@
 			</ul>
 		</div>
 		<div class="col-full">
-			Цена: <b class="h2">{{item.price}}</b> руб.
+			Цена: <b class="h2">{{item.category.price}}</b> руб.
 		</div>
 		<div class="col-full s-content__main">
 			<p class="lead">{{item.description|safe}}</p>

@@ -53,7 +53,7 @@
 											<img src="{{ image.file.url }}" alt="{{item.name}}" title="{{item.name}}">
 										{% endwith %}
 									{% else %}
-										<img src="{% static 'images/favicon/favicon.png' %}" alt="{{item.name}}" title="{{item.sub_name}}">
+										<img src="{% static 'images/favicon/favicon.png' %}" alt="{{item.name}}" title="{{item.name}}">
 									{% endif %}
 								</a>
 							</div>
@@ -63,7 +63,7 @@
 									</div>
 									<div class="entry__meta">
 										<span class="entry__meta-links">
-											<a href="{% url 'item_url' item.id %}">{{item.price}}</a>
+											<a href="{% url 'item_url' item.id %}">{{item.category.price}}</a>
 										</span>
 									</div>
 								</div>
