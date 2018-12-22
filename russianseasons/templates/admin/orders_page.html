@@ -12,17 +12,17 @@
 							Дата
 						</span>
 					</div>
-					<div class="col-3">
+					<div class="col-4">
 						<span class="small" style="display:block;margin:auto">
 							Содержание заказа
 						</span>
 					</div>
-					<div class="col-1">
+					<div class="col-2">
 						<span class="small" style="display:block;margin:auto">
 							Email
 						</span>
 					</div>
-					<div class="col-1">
+					<div class="col-2">
 						<span class="small" style="display:block;margin:auto">
 							Город
 						</span>
@@ -42,25 +42,25 @@
 							<br>
 							{{order.datetime|time:'H:i'}}
 						</div>
-						<div class="col-3">
+						<div class="col-4">
 							{% for item in order.items.all %}
 								<div class="row">
 									<div class="col">
 										{{item.prototype.name}}
 									</div>
-									<div class="col-2">
+									<div class="col-4">
 										{{item.color}}
 									</div>
-									<div class="col-2">
+									<div class="col-1">
 										{{item.size}}
 									</div>
 								</div>
 							{% endfor %}
 						</div>
-						<div class="col-1">
+						<div class="col-2">
 							{{order.email}}
 						</div>
-						<div class="col-1">
+						<div class="col-2">
 							{{order.city}}
 						</div>
 						<div class="col">
