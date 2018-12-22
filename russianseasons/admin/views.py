@@ -118,6 +118,7 @@ class NewItem(BaseAdminView):
 			obj = form.save(commit=False)
 			obj.number = ItemPrototype.objects.count()+1
 			obj.save()
+			obj.save()
 			return HttpResponseRedirect(reverse('admin_shop_url'))
 		else:
 			context['error'] = True
