@@ -1738,11 +1738,11 @@ button::-moz-focus-inner, input::-moz-focus-inner {
  * ------------------------------------------------------------------- */
 .s-pageheader {
    min-height: 174px;
-   background-image: url(../images/hero-bg.jpg);
    background-repeat: no-repeat;
    background-position: center center;
    position: relative;
 }
+
 
 .s-pageheader::before {
    display: block;

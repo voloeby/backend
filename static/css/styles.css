@@ -58,19 +58,34 @@ h1{
 	top:0;
 }
 
+@media (max-width: 1500px){
+	.s-pageheader{
+		background-image: url(/static/images/hero-bg1500x1000.jpg);
+	}
+}
+
 @media (max-width: 800px){
 	.top_logo{
 		font-size: 30px;
+	}
+	.s-pageheader{
+		background-image: url(/static/images/hero-bg800x433.jpg);
 	}
 }
 @media (max-width:600px){
 	.top_logo{
 		font-size: 30px;
 	}
+	.s-pageheader{
+		background-image: url(/static/images/hero-bg600x400.jpg);
+	}
 }
 @media (max-width:400px){
 	.top_logo{
 		font-size: 20px;
+	}
+	.s-pageheader{
+		background-image: url(/static/images/hero-bg400x267.jpg);
 	}
 }
 /* .top_logo{
