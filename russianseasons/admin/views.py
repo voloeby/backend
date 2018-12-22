@@ -108,16 +108,15 @@ class NewItem(BaseAdminView):
 	template_name='admin/item_page.html'
 	def get(self, request):
 		context = {}
-		context['form'] = ItemForm()
+		context['form'] = NewItemForm()
 		context['header'] = 'Создать вещь'
 		return render(request, self.template_name, context)
 	def post(self, request):
 		context = {}
-		form = ItemForm(request.POST, request.FILES)
+		form = NewItemForm(request.POST, request.FILES)
 		if form.is_valid():
 			obj = form.save(commit=False)
 			obj.number = ItemPrototype.objects.count()+1
-			obj.save()
 			obj.save()
 			return HttpResponseRedirect(reverse('admin_shop_url'))
 		else:
@@ -132,20 +131,20 @@ class EditItem(BaseAdminView):
 	def get(self, request, id):
 		context = {}
 		context['item'] = get_object_or_404(ItemPrototype, id=id)
-		context['form'] = ItemForm(instance=context['item'])
+		context['form'] = EditItemForm(instance=context['item'])
 		context['header'] = 'Изменить вещь'
 		return render(request, self.template_name, context)
 	def post(self, request, id):
 		context = {}
 		obj = get_object_or_404(ItemPrototype, id=id)
-		form = ItemForm(request.POST, request.FILES, instance=obj)
+		form = EditItemForm(request.POST, request.FILES, instance=obj)
 		if form.is_valid():
 			form.save()
 			return HttpResponseRedirect(reverse('admin_shop_url'))
 		else:
 			context['error'] = True
 			context['error_message'] = 'Неверно заполнена форма.' + str(form.errors)
-			context['form'] = ItemForm(instance=obj)
+			context['form'] = EditItemForm(instance=obj)
 			return render(request, self.template_name, context)
 	def delete(self, request, id):
 		obj = get_object_or_404(ItemPrototype, id=id)

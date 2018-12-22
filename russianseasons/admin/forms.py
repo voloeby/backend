@@ -44,17 +44,17 @@ class LoginForm(forms.Form):
 	username = UsernameField(widget=forms.TextInput(attrs={'autofocus': True, 'class': 'form-control'}))
 	password = forms.CharField(label=("Password"), strip=False, widget=forms.PasswordInput(attrs={'class': 'form-control', 'type': 'password'}))
 
-class ItemForm(forms.ModelForm):
+class EditItemForm(forms.ModelForm):
 	colors = forms.ModelMultipleChoiceField(queryset=Color.objects.all(), widget=ColorCheckboxWidget(), label='Цвета:')
 	sizes = forms.ModelMultipleChoiceField(queryset=Size.objects.all(), widget=SizeCheckboxWidget(), label='Размеры:')
 	class Meta:
 		model = ItemPrototype
-		fields = ['name', 'category', 'sub_name', 'description', 'price', 'colors', 'sizes']
+		fields = ['name', 'category', 'description', 'colors', 'sizes']
 		widgets = {
 			'name': forms.widgets.TextInput(attrs={'class': 'form-control'}),
-			'sub_name': forms.widgets.TextInput(attrs={'class': 'form-control'}),
+			# 'sub_name': forms.widgets.TextInput(attrs={'class': 'form-control'}),
 			'description': forms.widgets.Textarea(attrs={'class': 'form-control',}),
-			'price': forms.widgets.NumberInput(attrs={'class': 'form-control',}),
+			# 'price': forms.widgets.NumberInput(attrs={'class': 'form-control',}),
 			'category': forms.widgets.Select(attrs={'class': 'form-control',}),
 			# 'colors': forms.widgets.CheckboxInput(attrs={'class': 'form-control',}),
 
@@ -62,10 +62,26 @@ class ItemForm(forms.ModelForm):
 		labels = {
 			'name': 'Название:',
 			'category': 'Категория:',
-			'sub_name': 'Название кратко',
+			# 'sub_name': 'Название кратко',
 			'description': 'Описание:',
 			'colors': 'Цвета:',
 			'price': 'Цена:',
+		}
+
+class NewItemForm(forms.ModelForm):
+	class Meta:
+		model = ItemPrototype
+		fields = ['name', 'category', 'description']
+		widgets = {
+			'name': forms.widgets.TextInput(attrs={'class': 'form-control'}),
+			'description': forms.widgets.Textarea(attrs={'class': 'form-control',}),
+			'category': forms.widgets.Select(attrs={'class': 'form-control',}),
+
+		}
+		labels = {
+			'name': 'Название:',
+			'category': 'Категория:',
+			'description': 'Описание:',
 		}
 
 class TextInputForm(forms.Form):
@@ -127,12 +143,15 @@ class FinanceForm(forms.ModelForm):
 class CategoryForm(forms.ModelForm):
 	class Meta:
 		model = Category
-		fields = ['name', 'description']
+		fields = ['name', 'price', 'description']
 		widgets = {
 			'name': forms.TextInput(attrs={'class': 'form-control', 'required': ''}),
+			'price': forms.NumberInput(attrs={'class': 'form-control',}),
 			'description': forms.Textarea(attrs={'class': 'form-control', 'rows': '7',}),
+
 		}
 		labels = {
 			'name': 'Название:',
+			'price': 'Цена:',
 			'description': 'Описание:',
 		}
