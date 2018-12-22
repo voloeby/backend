@@ -61,7 +61,7 @@ class Order(models.Model):
 	user = models.ForeignKey(User, on_delete=models.CASCADE, default=None, null=True)
 	datetime = models.DateTimeField(auto_now_add=True)
 	class Meta:
-		ordering = ['number']
+		ordering = ['-datetime']
 
 class MyUser(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
