@@ -75,14 +75,15 @@
 				{% endfor %}
 			</ul>
 		</div>
+
 		<div class="col-full">
-			Цена: <b class="h2">{{item.category.price}}</b> руб.
-		</div>
-		<div class="col-full mt-2">
 			<p class="lead">{{item.description|safe}}</p>
 		</div>
 		<div class="col-full">
 			<p>{{item.category.description|safe}}</p>
+		</div>
+		<div class="col-full mt-2">
+			Цена: <b class="h2">{{item.category.price}}</b> руб.
 		</div>
 		<div class="col-full">
 			<div>
