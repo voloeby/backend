@@ -1,4 +1,3 @@
-
 from django.utils.deprecation import MiddlewareMixin
 from django.utils import timezone
 from django.http import Http404
@@ -6,6 +5,8 @@ from django.http import Http404
 
 class CheckUserActivityMiddleware(MiddlewareMixin):
     def process_request(self, request):
+        if request.path == '/admin/login':
+            return None
         if request.path.startswith('/admin/'):
             if request.user:
                 if request.user.is_authenticated:
