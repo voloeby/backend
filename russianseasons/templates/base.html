@@ -5,22 +5,22 @@
 	{% get_storage as storage %}
 	{% load static %}
 	{% url 'home_url' as home_url %}
-    <meta charset="utf-8">
-    <title>Русские сезоны | {% block title %}{% endblock %}</title>
-    <meta name="description" content="{% block description %}{% endblock %}">
+	<meta charset="utf-8">
+	<title>Русские сезоны | {% block title %}{% endblock %}</title>
+	<meta name="description" content="{% block description %}{% endblock %}">
 	<meta name="keywords" content="{{storage.overall_keywords}}, {% block keywords %}{% endblock %}">
-    <meta name="author" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="author" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link rel="canonical" href="https://voloeby.com{{request.path}}" />
-    <link rel="stylesheet" href="/static/css/base.css">
+	<link rel="stylesheet" href="/static/css/base.css">
 	<link rel="stylesheet" href="/static/css/fonts.css">
-    <link rel="stylesheet" href="/static/css/vendor.css">
-    <link rel="stylesheet" href="/static/css/main.css">
+	<link rel="stylesheet" href="/static/css/vendor.css">
+	<link rel="stylesheet" href="/static/css/main.css">
 	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <script src="/static/js/modernizr.js"></script>
-    <!--<script src="/static/js/pace.min.js"></script>-->
-    <link rel="shortcut icon" href="{% static 'images/favicon/favicon.png' %}" type="image/png">
+	<script src="/static/js/modernizr.js"></script>
+	<!--<script src="/static/js/pace.min.js"></script>-->
+	<link rel="shortcut icon" href="{% static 'images/favicon/favicon.png' %}" type="image/png">
 	<link rel="icon" type="image/png" href="{% static 'images/favicon/favicon.png' %}" size="975x975">
 	<link rel="icon" type="image/png" href="{% static 'images/favicon/favicon16.png' %}" sizes="16x16">
 	<link rel="icon" type="image/png" href="{% static 'images/favicon/favicon32.png' %}" sizes="32x32">
@@ -34,7 +34,7 @@
 	<link rel="apple-touch-icon" href="{% static 'images/favicon/favicon152.png' %}" sizes="152x152">
 	<link rel="apple-touch-icon" href="{% static 'images/favicon/favicon167.png' %}" sizes="167x167">
 	<link rel="icon" href="{% static 'images/favicon/favicon.ico' %}" type="image/x-icon">
-  	<link rel="shortcut icon" href="{% static 'images/favicon/favicon.ico' %}" type="image/x-icon">
+	  <link rel="shortcut icon" href="{% static 'images/favicon/favicon.ico' %}" type="image/x-icon">
 	<style type="text/css">
 		@font-face {
 		font-family: "Euro-Caps";
@@ -50,109 +50,112 @@
 	{% include "local_meta.html" %}
 </head>
 <body id="top" style="min-width:320px">
-    <section class="s-pageheader {% if request.path == home_url %}s-pageheader--home{% endif %}">
-        <header class="header">
-            <div class="header__content row">
-                <div class="header__logo">
-                    <a class="logo" href="{% url 'home_url' %}">
+	<section class="s-pageheader {% if request.path == home_url %}s-pageheader--home{% endif %}">
+		<header class="header">
+			<div class="header__content row">
+				<div class="header__logo">
+					<a class="logo" href="{% url 'home_url' %}">
 						<span class="top_logo">
 							Русские Сезоны
 						</span>
-                    </a>
-                </div>
-                <ul class="header__social">
-                    <li>
-                        <a href="{{storage.instagram_link}}" target="_blank"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-                    </li>
+					</a>
+				</div>
+				<ul class="header__social">
 					<li>
-                        <a href="{{storage.vk_link}}" target="_blank"><i class="fab fa-vk" aria-hidden="true"></i></a>
-                    </li>
+						<a href="{{storage.instagram_link}}" target="_blank"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+					</li>
 					<li>
-                        <a href="{{storage.telegram_link}}" target="_blank"><i class="fab fa-telegram-plane"></i></a>
-                    </li>
-                </ul>
-                <a class="header__toggle-menu" href="#0" title="Меню"><span>Меню</span></a>
-                <nav class="header__nav-wrap" >
-                    <ul class="header__nav" style="font-family: 'Euro-Caps'">
+						<a href="{{storage.vk_link}}" target="_blank"><i class="fab fa-vk" aria-hidden="true"></i></a>
+					</li>
+					<li>
+						<a href="{{storage.telegram_link}}" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+					</li>
+				</ul>
+				<a class="header__toggle-menu" href="#0" title="Меню"><span>Меню</span></a>
+				<nav class="header__nav-wrap" >
+					<ul class="header__nav" style="font-family: 'Euro-Caps'">
 						<li><a href="{% url 'art_url' %}" title="">Творчество</a></li>
-                        <li><a href="{% url 'shop_url' %}" title="">Магазин</a></li>
+						<li><a href="{% url 'shop_url' %}" title="">Магазин</a></li>
 						<li><a href="{% url 'contacts_url' %}" title="">Контакты</a></li>
-                        <li><a href="{% url 'about_url' %}" title="">О нас</a></li>
+						<li><a href="{% url 'about_url' %}" title="">О нас</a></li>
 
 
-                    </ul>
-                    <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu" style='float:left'>Закрыть</a>
-                </nav>
-            </div>
-        </header>
+					</ul>
+					<a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu" style='float:left'>Закрыть</a>
+				</nav>
+			</div>
+		</header>
 		{% if request.path == home_url %}
 			<div class="pageheader-content row">
 				<div class="col-full">
 					<div class="featured">
+						<p style="text-align:justify;color: rgba(255, 255, 255, 0.8); font-size:14pt;" class="my-font">
+							{{storage.home_text}}
+						</p>
 						<img src="static/images/1.jpg" style="display:block;margin-left:auto;margin-right:auto;">
 					</div>
 				</div>
 			</div>
 		{% endif %}
-    </section>
+	</section>
 	{% block content %}{% endblock %}
-    <footer class="s-footer">
-        <div class="s-footer__main">
-            <div class="row">
+	<footer class="s-footer">
+		<div class="s-footer__main">
+			<div class="row">
 				<div class="col-two md-four mob-full s-footer__social">
-                    <h4>Соцсети</h4>
-                    <ul class="s-footer__linklist">
-                        <li><a href="{{storage.instagram_link}}">Instagram</a></li>
-                        <li><a href="{{storage.vk_link}}">Вконтакте</a></li>
-                        <li><a href="{{storage.telegram_link}}">Телеграм</a></li>
-                    </ul>
-                </div>
-                <div class="col-two md-four mob-full s-footer__sitelinks">
-                    <h4>Ссылки</h4>
-                    <ul class="s-footer__linklist">
-                        <li><a href="{% url 'home_url' %}">Главная</a></li>
-                        <li><a href="{% url 'shop_url' %}">Магазин</a></li>
-                        <li><a href="{% url 'about_url' %}">О нас</a></li>
-                        <li><a href="{% url 'contacts_url' %}">Контакты</a></li>
+					<h4>Соцсети</h4>
+					<ul class="s-footer__linklist">
+						<li><a href="{{storage.instagram_link}}">Instagram</a></li>
+						<li><a href="{{storage.vk_link}}">Вконтакте</a></li>
+						<li><a href="{{storage.telegram_link}}">Телеграм</a></li>
+					</ul>
+				</div>
+				<div class="col-two md-four mob-full s-footer__sitelinks">
+					<h4>Ссылки</h4>
+					<ul class="s-footer__linklist">
+						<li><a href="{% url 'home_url' %}">Главная</a></li>
+						<li><a href="{% url 'shop_url' %}">Магазин</a></li>
+						<li><a href="{% url 'about_url' %}">О нас</a></li>
+						<li><a href="{% url 'contacts_url' %}">Контакты</a></li>
 						<li><a href="{% url 'art_url' %}">Творчество</a></li>
-                    </ul>
-                </div>
-                <div class="col-six md-full end s-footer__subscribe">
-                    <h4>Подписаться на новости проекта</h4>
-                    <div class="subscribe-form">
-                        <form id="mc-form" class="group" novalidate="true" action="">
-                            <input type="email" value="" name="EMAIL" class="email" id="mc-email" placeholder="Email" required="">
-                            <input type="submit" name="subscribe" value="Подписаться" onclick="javascript:subscribe_to_news()">
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="s-footer__bottom">
-            <div class="row">
-                <div class="col-full">
-                    <div class="go-top">
-                        <a class="smoothscroll" title="Back to Top" href="#top"></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+					</ul>
+				</div>
+				<div class="col-six md-full end s-footer__subscribe">
+					<h4>Подписаться на новости проекта</h4>
+					<div class="subscribe-form">
+						<form id="mc-form" class="group" novalidate="true" action="">
+							<input type="email" value="" name="EMAIL" class="email" id="mc-email" placeholder="Email" required="">
+							<input type="submit" name="subscribe" value="Подписаться" onclick="javascript:subscribe_to_news()">
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="s-footer__bottom">
+			<div class="row">
+				<div class="col-full">
+					<div class="go-top">
+						<a class="smoothscroll" title="Back to Top" href="#top"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
 	<div id='csrf_token' style='display:none'>{{csrf_token}}</div>
-    <!--<div id="preloader">
-        <div id="loader">
-            <div class="line-scale">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-        </div>
-    </div>-->
-    <script src="/static/js/jquery-3.2.1.min.js"></script>
-    <script src="/static/js/plugins.js"></script>
-    <script src="/static/js/main.js"></script>
+	<!--<div id="preloader">
+		<div id="loader">
+			<div class="line-scale">
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+		</div>
+	</div>-->
+	<script src="/static/js/jquery-3.2.1.min.js"></script>
+	<script src="/static/js/plugins.js"></script>
+	<script src="/static/js/main.js"></script>
 	<script src="{% static 'js/scripts.js' %}"></script>
 </body>
 </html>
