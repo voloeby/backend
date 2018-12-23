@@ -6,10 +6,16 @@ from django.views import View
 from django.http import HttpResponseRedirect, HttpResponse
 
 def shop_page(request):
+
 	context = {}
 	template_name = 'shop.html'
 	context['items'] = ItemPrototype.objects.all()
-	return render(request, template_name, context)
+	res = render(request, template_name, context)
+	# from django.db import connection
+	# for i in connection.queries:
+	# 	print(i)
+	# print(len(connection.queries))
+	return res
 
 
 class ItemView(View):

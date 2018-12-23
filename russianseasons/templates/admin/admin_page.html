@@ -12,7 +12,9 @@
 								{{user.username}}
 							</div>
 							<div class="col-6">
-								{{user.last_login|date:'d.m.Y H:i'}}
+								{% if user.profile.last_activity %}
+									{{user.profile.last_activity|date:'d.m.Y H:i'}}
+								{% endif %}
 							</div>
 							<div class="col-1">
 								<input type="checkbox" {% if user.profile.is_active %}checked{% endif %} onclick="javascript:upd_user({{user.id}})">

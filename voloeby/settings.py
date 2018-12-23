@@ -51,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+	'russianseasons.middleware.admin.CheckUserActivityMiddleware',
 	# 'oscar.apps.basket.middleware.BasketMiddleware',
 	# 'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 ]
@@ -151,7 +152,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 

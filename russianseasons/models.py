@@ -117,6 +117,7 @@ class AdminStorage(Storage):
 
 class Profile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+	last_activity = models.DateTimeField(null=True, default=None)
 	is_active = models.BooleanField(default=False)
 
 @receiver(post_save, sender=User)
