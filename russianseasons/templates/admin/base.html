@@ -1,15 +1,10 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>
-		{% block title %}
-			voloeby
-		{% endblock %}
-	</title>
-	{% block head %}
-	{% endblock %}
+	<title>{% block title %}voloeby{% endblock %}</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
+	{% block head %}{% endblock %}
 	{% load static %}
 	<link rel="stylesheet" href="/static/bootstrap-4/css/bootstrap.min.css">
 	<link rel="stylesheet" href="{% static 'css/admin_styles.css' %}">
@@ -24,31 +19,31 @@
 				</li>
 				{% if request.user.is_authenticated %}
 					<li class="nav-item">
-		  				<a class="nav-link text-light " href="{% url 'admin_shop_url' %}">Магазин</a>
+						  <a class="nav-link text-light " href="{% url 'admin_shop_url' %}">Магазин</a>
 					</li>
 					<li class="nav-item">
-		  				<a class="nav-link text-light " href="{% url 'admin_main_page_posts_url' %}">Посты</a>
+						  <a class="nav-link text-light " href="{% url 'admin_main_page_posts_url' %}">Посты</a>
 					</li>
 					<li class="nav-item">
-		  				<a class="nav-link text-light " href="{% url 'admin_orders_url' %}">Заказы</a>
+						  <a class="nav-link text-light " href="{% url 'admin_orders_url' %}">Заказы</a>
 					</li>
 					<li class="nav-item">
-		  				<a class="nav-link text-light " href="{% url 'admin_messages_url' %}">Письма</a>
+						  <a class="nav-link text-light " href="{% url 'admin_messages_url' %}">Письма</a>
 					</li>
 					<li class="nav-item">
-		  				<a class="nav-link text-light " href="{% url 'admin_subscribers_url' %}">Пoдписчики</a>
+						  <a class="nav-link text-light " href="{% url 'admin_subscribers_url' %}">Пoдписчики</a>
 					</li>
 					<li class="nav-item">
-		  				<a class="nav-link text-light " href="{% url 'admin_another_url' %}">Всякое</a>
+						  <a class="nav-link text-light " href="{% url 'admin_another_url' %}">Всякое</a>
 					</li>
 					<li class="nav-item">
-		  				<a class="nav-link text-light " href="{% url 'admin_art_url' %}">Art</a>
+						  <a class="nav-link text-light " href="{% url 'admin_art_url' %}">Art</a>
 					</li>
 					<li class="nav-item">
-		  				<a class="nav-link text-light " href="{% url 'admin_finance_url' %}">Финансы</a>
+						  <a class="nav-link text-light " href="{% url 'admin_finance_url' %}">Финансы</a>
 					</li>
 					<li class="nav-item justify-content-end ml-auto">
-		  				<a class="nav-link text-light" href="{% url 'logout_url' %}">Выйти</a>
+						  <a class="nav-link text-light" href="{% url 'logout_url' %}">Выйти</a>
 					</li>
 				{% endif %}
 			</ul>
@@ -63,8 +58,8 @@
 		{% block content %}{% endblock %}
 		<br>
 	</div>
-  	<footer class="page-footer font-small bg-dred text-center container-fluid m-0 rounded-0 text-lgrey">
-  	</footer>
+	  <footer class="page-footer font-small bg-dred text-center container-fluid m-0 rounded-0 text-lgrey">
+	  </footer>
 	<script type="text/javascript" src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
 	<script type="text/javascript" src="{% static 'js/admin_scripts.js' %}"></script>
 	<div id='csrf_token' style='display:none'>{{csrf_token}}</div>
