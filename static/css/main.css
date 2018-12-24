@@ -1061,7 +1061,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 @media (min-width:600px){
-	.pull-quote-light{
+	.pull-quote{
 		width:90%;
 		margin-left: 5%;
 		margin-right: 5%;
