@@ -1060,10 +1060,12 @@ button::-moz-focus-inner, input::-moz-focus-inner {
    color: rgba(0, 0, 0, 0.25);
 }
 
-.pull-quote-light{
-	width:90%;
-	margin-left: 5%;
-	margin-right: 5%;
+@media (min-width:600px){
+	.pull-quote-light{
+		width:90%;
+		margin-left: 5%;
+		margin-right: 5%;
+	}
 }
 
 .pull-quote-light::before, .pull-quote-light::after {
