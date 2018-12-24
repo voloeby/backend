@@ -23,6 +23,11 @@
 						<div class="col">
 							{{item.text}}
 						</div>
+						{% if request.user == item.user %}
+							<div class="col-1">
+								<button class="btn btn-danger" onclick="javascript:really_delete(del_finance, {{item.id}})">del</button>
+							</div>
+						{% endif %}
 					</div>
 				</li>
 			{% endfor %}

@@ -477,6 +477,14 @@ class FinancesPage(BaseAdminView):
             context['total'] = FinanceItem.total()
         return render(request, self.template_name, context)
 
+    def delete(self, request):
+        try:
+            FinanceItem.objects.get(id=request.body.decode(
+                "utf-8").split('&')[0].split('=')[1]).delete()
+        except FinanceItem.DoesNotExist:
+            return HttpResponse('not_deleted')
+        return HttpResponse('ok')
+
 
 class AdminPage(BaseAdminView):
     template_name = 'admin/admin_page.html'

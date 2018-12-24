@@ -133,7 +133,7 @@ function del_finance(fin_id){
 		url: '/admin/finances',
 		headers:{ 'X-CSRFToken':csrf},
 		method: 'delete',
-		data: fin_id,
+		data: {'id': fin_id},
 		success: (res)=>{
 			if (res == 'ok') {
 				$('#'+fin_id).remove();
@@ -177,6 +177,7 @@ function move_down_product(product_id){
 		}
 	});
 }
+
 
 function really_delete(func, arg=null){
 	$('#pop_up_window_delete').css('display', 'block');
