@@ -135,6 +135,7 @@ function del_finance(fin_id){
 		method: 'delete',
 		data: {'id': fin_id},
 		success: (res)=>{
+			console.log(res);
 			if (res == 'ok') {
 				$('#'+fin_id).remove();
 			}

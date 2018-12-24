@@ -479,10 +479,13 @@ class FinancesPage(BaseAdminView):
 
     def delete(self, request):
         try:
-            FinanceItem.objects.get(id=request.body.decode(
-                "utf-8").split('&')[0].split('=')[1]).delete()
-        except FinanceItem.DoesNotExist:
-            return HttpResponse('not_deleted')
+            try:
+                FinanceItem.objects.get(id=request.body.decode(
+                    "utf-8").split('&')[0].split('=')[1]).delete()
+            except FinanceItem.DoesNotExist:
+                return HttpResponse('not_deleted')
+        except Exception as e:
+            return HttpResponse(e)
         return HttpResponse('ok')
 
 
