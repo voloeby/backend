@@ -133,8 +133,6 @@ class Storage(models.Model):
         return
 
 
-class AdminStorage(Storage):
-    pass
 
 
 class Profile(models.Model):
@@ -161,11 +159,6 @@ class Art(models.Model):
 
     class Meta:
         ordering = ['-datetime']
-
-
-class Admin(User):
-    pass
-
 
 class FinanceItem(models.Model):
     user = models.ForeignKey(User, related_name='finances', on_delete=models.SET_NULL, null=True)
