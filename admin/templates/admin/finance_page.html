@@ -1,0 +1,58 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+
+{% block content %}
+	<div class="container">
+		<h1>Финансы ({{request.user.first_name}})</h1>
+		<button onclick="javascript:add_finance('+')" class="btn btn-primary">Добавить доход</button>
+		<button onclick="javascript:add_finance('-')" class="btn btn-primary">Добавить расход</button>
+		<h2 class="fin-total">Всего: {{total}}</h2>
+		<ul class="list-group list-group-flush mt-2">
+			{% for item in finances %}
+				<li class="list-group-item fin-li" id='{{item.id}}'>
+					<div class="row">
+						<div class="col-2">
+							{{item.user.first_name}}
+						</div>
+						<div class="col-2">
+							{% if item.is_income %}+{% else %}-{% endif %}{{item.money}}
+						</div>
+						<div class="col-1">
+							{{item.datetime|date:'d.m.Y'}}
+						</div>
+						<div class="col">
+							{{item.text}}
+						</div>
+						{% if request.user == item.user %}
+							<div class="col-1">
+								<button class="btn btn-danger" onclick="javascript:really_delete(del_finance, {{item.id}})">del</button>
+							</div>
+						{% endif %}
+					</div>
+				</li>
+			{% endfor %}
+		</ul>
+		<div class="dark-back no-disp" id='pop_up_window'>
+			<div class="rounded pop-up-win">
+				<div class="container">
+					<h2>Добавить запись</h2>
+					<form class="mt-2" action="javascript:send_finance()" method="post" id='new_finance_form'>
+						{{form.as_p}}
+						<div class="container mt-2 mb-2">
+							<div class="row ">
+								<div class="col-2 pl-0">
+									<input type="submit" value="Сохранить" class="btn btn-success container-fluid">
+								</div>
+								<div class="col-2">
+									<a href="javascript:close_win('pop_up_window')">
+										<div class="btn btn-danger container-fluid">Отменить</div>
+									</a>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

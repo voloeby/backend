@@ -115,3 +115,7 @@ h1{
 	display: inline-block;
 	vertical-align: top;
 }
+
+.text-justify{
+	text-align: justify;
+}

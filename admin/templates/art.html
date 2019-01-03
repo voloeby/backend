@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+
+
+{% block title %}Творчество{% endblock %}
+{% block description %}{{storage.meta_art_description}}{% endblock %}
+{% block keywords %}{{storage.meta_art_keywords}}{% endblock %}
+
+{% block head %}
+	<meta name="og:title" content="Творчество">
+	<meta name="og:url" content="https://voloeby.com{{request.path}}">
+	<meta name="og:type" content="article">
+	<meta name="og:locale" content="ru_RU">
+	<meta name="og:description" content="{{storage.meta_art_description}}">
+	<meta name="og:image" content="https://voloeby.com{% thumbnail photos.first.image 1200x630 crop %}">
+	<meta name="og:image:width" content="1200">
+	<meta name="og:image:height" content="630">
+	<meta name="og:image" content="https://voloeby.com{% thumbnail photos.first.image 50x50 crop %}">
+	<meta name="og:image:width" content="50">
+	<meta name="og:image:height" content="50">
+	<meta name="og:image" content="https://voloeby.com{% thumbnail photos.first.image 968x630 crop %}">
+	<meta name="og:image:width" content="968">
+	<meta name="og:image:height" content="504">
+
+	<meta itemprop="name" content="Творчество">
+	<meta itemprop="description" content="{{storage.meta_art_description}}">
+	<meta itemprop="image" content="https://voloeby.com{% thumbnail photos.first.image 1200x630 crop %}">
+{% endblock %}
+
+{% block content %}
+	<section class="s-content">
+		<div class="row narrow">
+			<div class="col-full s-content__header" data-aos="fade-up">
+				<h1 class="my-font">Творчество</h1>
+			</div>
+		</div>
+		<div class="row masonry-wrap" style="margin-top:10px" data-aos="fade-up">
+			<aside class="pull-quote">
+				<blockquote class="block_center" style="text-align: center;">
+					<p>Если искусство нужно объяснять, то это говно, а не искусство</p>
+				</blockquote>
+			</aside>
+			<div class="masonry">
+				<div class="grid-sizer"></div>
+				{% for item in photos %}
+					<article class="masonry__brick entry format-standard" data-aos="fade-up">
+						<div class="entry__thumb">
+							<a href="{{item.link}}" class="entry__thumb-link" target="_blank">
+								<img src="{{item.image.url}}">
+							</a>
+						</div>
+					</article>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+{% endblock %}

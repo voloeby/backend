@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% load static %}
+
+{% block title %}{{item.name}} – {{item.category.price}} руб{% endblock %}
+{% block description %}{{item.description|truncatechars:310}}{% endblock %}
+
+{% block head %}
+	<meta name="og:title" content="{{item.name}}">
+	<meta name="og:url" content="https://voloeby.com{{request.path}}">
+	<meta name="og:type" content="og:product">
+	<meta name="og:locale" content="ru_RU">
+	<meta name="og:description" content="{{item.description|truncatechars:310}}">
+	<meta name="og:image" content="https://voloeby.com{% thumbnail item.main_image.file 1200x630 crop %}">
+	<meta name="og:image:width" content="1200">
+	<meta name="og:image:height" content="630">
+	<meta name="og:image" content="https://voloeby.com{% thumbnail item.main_image.file 50x50 crop %}">
+	<meta name="og:image:width" content="50">
+	<meta name="og:image:height" content="50">
+	<meta name="og:image" content="https://voloeby.com{% thumbnail item.main_image.file 968x630 crop %}">
+	<meta name="og:image:width" content="968">
+	<meta name="og:image:height" content="504">
+	<meta name="og:image" content="https://voloeby.com{% thumbnail item.main_image.file 1000x1000 crop %}">
+	<meta name="og:image:width" content="1000">
+	<meta name="og:image:height" content="1000">
+	<meta name="og:price:amount" content="{{item.category.price}}">
+	<meta name="og:price:currency" content="RUB">
+
+	<meta itemprop="name" content="{{item.name}}">
+	<meta itemprop="description" content="{{item.description|truncatechars:310}}">
+	<meta itemprop="image" content="https://voloeby.com{% thumbnail item.main_image.file 1000x1000 crop %}">
+
+<!-- Facebook Meta Tags -->
+
+{% endblock %}
+
+{% block content %}
+<section class="s-content s-content--narrow s-content--no-padding-bottom">
+	<article class="row format-standard" data-aos="fade-up">
+		<div class="s-content__header col-full">
+			<h1 class="s-content__header-title my-font">
+				{{item.category.name}} "{{item.name}}"
+			</h1>
+		</div>
+		<div class="s-content__media col-full">
+			<div class="s-content__post-thumb" style="font-size: 0;">
+				{% if item.main_image %}
+					<img src="{{item.main_image.file.url}}" class="block_center" style="display:block;margin:auto" id="main_image" alt="{{item.name}}" title="{{item.name}}">
+				{% else %}
+					<img src="{% static 'images/favicon/favicon228.png' %}" class="block_center" alt="{{item.name}}">
+				{% endif %}
+				{% for image in item.small_images.all %}
+					<a href="javascript:to_main_image({{image.id}})">
+						<div class="item-small-images" style="width:calc(100% / ({{item.images.count}} - 1)); max-width:51%">
+							<img src="{{image.file.url}}" class="" id="image_{{image.id}}">
+						</div>
+					</a>
+				{% endfor %}
+
+			</div>
+		</div> <!-- end s-content__media -->
+		<div class="col-six">
+			<h3>Размер</h3>
+			<ul class="stats-tabs">
+				{% for size in item.sizes.all %}
+					<li id='size_{{size.name}}'><a style="padding-left:9px;padding-right:9px;border-style:solid;border-color:transparent" href="javascript:chose_size('{{size.name}}')">{{size.name.upper}}<em> </em></a></li>
+				{% endfor %}
+			</ul>
+		</div>
+		<div class="col-six">
+			<h3>Цвет</h3>
+			<ul class="stats-tabs">
+				{% for color in item.colors.all %}
+					<li id='color_{{color.name}}'><a style="padding-left:9px;padding-right:9px;border-style:solid;border-color:transparent"  href="javascript:chose_color('{{color.name}}')">{{color.name}}<em> </em></a></li>
+				{% endfor %}
+			</ul>
+		</div>
+
+		<div class="col-full">
+			<p class="lead">{{item.description|safe}}</p>
+		</div>
+		<div class="col-full">
+			<p>{{item.category.description|safe}}</p>
+		</div>
+		<div class="col-full">
+			Цена: <b class="h4">{{item.category.price}}</b> руб.
+		</div>
+		<div class="col-full mt-24">
+			<div>
+                <label for="sampleInput">Email</label>
+                <input class="full-width" type="email" placeholder="your@email.ru" id="email_input">
+            </div>
+			<div>
+                <label for="sampleInput">Куда доставить</label>
+                <input class="full-width" type="email" placeholder="Санкт-Петербург" id="city_input">
+            </div>
+			<div class="col-full" id='error_box' style='display:none'>
+				<div class="alert-box alert-box--error hideit">
+		            <p id='error_message'></p>
+		            <i class="fa fa-times alert-box__close"></i>
+		        </div>
+			</div>
+			<div class="col-full" id='success_box' style="display:none">
+				<div class="alert-box alert-box--success hideit">
+					<p id='success_message'></p>
+        			<i class="fa fa-times alert-box__close"></i>
+				</div>
+
+			</div>
+
+
+			<a class="btn btn--primary full-width" href='javascript:new_pre_order()' id='button'>Оформить предзаказ</a>
+
+		</div>
+
+
+	</article>
+
+
+</section> <!-- s-content -->
+
+{% endblock %}

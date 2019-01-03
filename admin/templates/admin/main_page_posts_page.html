@@ -1,0 +1,30 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+	<div class="container">
+		<h1>Посты на главной</h1>
+		<a href="{% url 'new_main_page_post_url' %}">
+			<button class="btn btn-primary">Добавить пост</button>
+		</a>
+			<ul class="list-group list-group-flush mt-2">
+				{% for post in posts %}
+					<li class="list-group-item" id='{{post.id}}'>
+						{{post.content|safe}}
+						<div class="row">
+							<div class="col">
+								<a href="{% url 'edit_main_page_post_url' post.id %}" class="" id='edit_link_{{post.id}}'>
+									<button type="button" name="button" class="btn btn-success container-fluid">Изменить</button>
+								</a>
+							</div>
+							<div class="col">
+								<a href="javascript:del_post({{post.id}})" class="">
+									<button type="button" name="button" class="btn btn-danger container-fluid">Удалить</button>
+								</a>
+							</div>
+						</div>
+
+					</li>
+				{% endfor %}
+			</ul>
+	</div>
+{% endblock %}

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'russianseasons',
     'easy_thumbnails',
     'image_cropping',
+	'htmlmin',
 ]  # + get_core_apps()
 
 SITE_ID = 1
@@ -52,6 +53,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'russianseasons.middleware.admin.CheckUserActivityMiddleware',
+	'htmlmin.middleware.HtmlMinifyMiddleware',
+    'htmlmin.middleware.MarkRequestMiddleware',
     # 'oscar.apps.basket.middleware.BasketMiddleware',
     # 'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 ]

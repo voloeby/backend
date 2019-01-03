@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>{% block title %}voloeby{% endblock %}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	{% block head %}{% endblock %}
+	{% load static %}
+	<link rel="stylesheet" href="/static/bootstrap-4/css/bootstrap.min.css">
+	<link rel="stylesheet" href="{% static 'css/admin_styles.css' %}">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+</head>
+<body class="b-0 p-0" style="min-width:1024px;">
+		<nav class="navbar navbar-expand bg-dark sticky-top">
+			<ul class="navbar-nav text-center w-100">
+				<li class="nav-item">
+					<a class="nav-link text-light " href="{% url 'home_url' %}">К сайту</a>
+				</li>
+				{% if request.user.is_authenticated %}
+					<li class="nav-item">
+						  <a class="nav-link text-light " href="{% url 'admin_shop_url' %}">Магазин</a>
+					</li>
+					<li class="nav-item">
+						  <a class="nav-link text-light " href="{% url 'admin_main_page_posts_url' %}">Посты</a>
+					</li>
+					<li class="nav-item">
+						  <a class="nav-link text-light " href="{% url 'admin_orders_url' %}">Заказы</a>
+					</li>
+					<li class="nav-item">
+						  <a class="nav-link text-light " href="{% url 'admin_messages_url' %}">Письма</a>
+					</li>
+					<li class="nav-item">
+						  <a class="nav-link text-light " href="{% url 'admin_subscribers_url' %}">Пoдписчики</a>
+					</li>
+					<li class="nav-item">
+						  <a class="nav-link text-light " href="{% url 'admin_another_url' %}">Всякое</a>
+					</li>
+					<li class="nav-item">
+						  <a class="nav-link text-light " href="{% url 'admin_art_url' %}">Art</a>
+					</li>
+					<li class="nav-item">
+						  <a class="nav-link text-light " href="{% url 'admin_finance_url' %}">Финансы</a>
+					</li>
+					<li class="nav-item justify-content-end ml-auto">
+						  <a class="nav-link text-light" href="{% url 'logout_url' %}">Выйти</a>
+					</li>
+				{% endif %}
+			</ul>
+		</nav>
+	<div class="" style="min-height:87.5vh">
+		<br>
+		{% if error %}
+			<div class="alert alert-danger container">
+				{{error_message|safe}}
+			</div>
+		{% endif %}
+		{% block content %}{% endblock %}
+		<br>
+	</div>
+	  <footer class="page-footer font-small bg-dred text-center container-fluid m-0 rounded-0 text-lgrey">
+	  </footer>
+	<script type="text/javascript" src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/admin_scripts.js' %}"></script>
+	<div id='csrf_token' style='display:none'>{{csrf_token}}</div>
+	<div class="dark-back no-disp" id='pop_up_window_delete'>
+		<div class="rounded pop-up-win">
+			<div class="container m-2">
+				<h2>Дейстрительно удалить?</h2>
+				<div class="row m-2">
+					<div class="col pl-0">
+						<button class="btn btn-danger container-fluid" id='delete_button'>Удалить</button>
+					</div>
+					<div class="col">
+						<button onclick="javascript:close_win('pop_up_window_delete')" class="btn btn-success container-fluid">Отменить</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

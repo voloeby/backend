@@ -1,0 +1,48 @@
+{% extends 'admin/base.html' %}
+
+
+
+{% block content %}
+	<div class="container">
+		<h1>Сообщения</h1>
+		<ul class="list-group list-group-flush mt-2">
+			<li class="list-group-item" style="background-color:#efefef">
+				<div class="row">
+					<div class="col-2">
+						<small>Дата</small>
+					</div>
+					<div class="col-2">
+						<small>Имя</small>
+					</div>
+					<div class="col-2">
+						<small>Email</small>
+					</div>
+					<div class="col">
+						<small>Сообщение</small>
+					</div>
+				</div>
+			</li>
+			{% for message in messages %}
+				<li class="list-group-item" id="{{item.id}}">
+					<div class="row">
+						<div class="col-2">
+							{{message.datetime|date:'d.m.Y'}}
+							<br>
+							{{message.datetime|time:'H:i'}}
+						</div>
+						<div class="col-2">
+							{{message.name}}
+						</div>
+						<div class="col-2">
+							{{message.email}}
+						</div>
+						<div class="col">
+							{{message.text}}
+						</div>
+					</div>
+				</li>
+			{% endfor %}
+		</ul>
+
+	</div>
+{% endblock %}

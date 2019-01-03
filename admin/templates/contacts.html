@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% load static %}
+
+{% block title %}Контакты{% endblock %}
+{% block description %}{{storage.meta_contacts_description}}{% endblock %}
+{% block keywords %}{{storage.meta_contacts_keywords}}{% endblock %}
+
+{% block head %}
+	<meta name="og:title" content="Контакты">
+	<meta name="og:url" content="https://voloeby.com{{request.path}}">
+	<meta name="og:type" content="article">
+	<meta name="og:locale" content="ru_RU">
+	<meta name="og:description" content="{{storage.meta_contacts_description}}">
+	<meta name="og:image" content="https://voloeby.com{% static 'images/round_logo_1400x600.png' %}">
+	<meta name="og:image:width" content="1400">
+	<meta name="og:image:height" content="600">
+	<meta name="og:image" content="https://voloeby.com{% static 'images/round_logo_2800x1200.png' %}">
+	<meta name="og:image:width" content="2800">
+	<meta name="og:image:height" content="1200">
+
+	<meta itemprop="name" content="Контакты">
+	<meta itemprop="description" content="{{storage.meta_contacts_description}}">
+	<meta itemprop="image" content="https://voloeby.com{% static 'images/favicon/contacts_square.png' %}">
+{% endblock %}
+
+{% block content %}
+	<section class="s-content s-content--narrow">
+
+		<div class="row narrow">
+
+			<div class="s-content__header col-full">
+				<h1 class="s-content__header-title my-font" data-aos="fade-up">
+					Контакты
+				</h1>
+			</div>
+			<div class="col-full s-content__main" data-aos="fade-up">
+
+
+				<div class="row ">
+					<div class="col-six tab-full">
+						{% if storage.address %}
+						<h3>Адрес</h3>
+						<address class="">
+							{{storage.address}}
+						</address>
+						{% endif %}
+
+					</div>
+
+					<div class="col-six tab-full">
+						{% if storage.contact_number %}
+							телефон:
+							<a href="tel:{{storage.contact_number}}">
+								{{storage.contact_number}}
+							</a>
+							<br>
+						{% endif %}
+						{% if storage.contact_email %}
+							email:
+							<a href="mailto:{{storage.contact_email}}">
+								{{storage.contact_email}}
+							</a>
+							<br>
+						{% endif %}
+						{% if storage.contact_telegram %}
+							telegram:
+							<a href="https://t.me/{{storage.contact_telegram}}">
+								@{{storage.contact_telegram}}
+							</a>
+							<br>
+						{% endif %}
+						{% if storage.contact_whatsapp %}
+							whatsapp:
+							<a href="https://wa.me/{{storage.contact_whatsapp}}">
+								+{{storage.contact_whatsapp}}
+							</a>
+							<br>
+						{% endif %}
+
+						</p>
+					</div>
+				</div>
+
+				<h3 class="my-font">Обкашлять вопросик</h3>
+
+				<form name="cForm" id="cForm" method="post" action="{{request.path}}">
+					{% csrf_token %}
+					<fieldset>
+
+						<div class="form-field">
+							<input name="cName" type="text" id="cName" class="full-width" placeholder="Ваше имя" value="" required>
+						</div>
+
+						<div class="form-field">
+							<input name="cEmail" type="text" id="cEmail" class="full-width" placeholder="Email" value="" required>
+						</div>
+
+						<div class="message form-field">
+						<textarea name="cMessage" id="cMessage" class="full-width" placeholder="Сообщение" required></textarea>
+						</div>
+
+						<button type="submit" class="submit btn btn--primary full-width">Отправить</button>
+
+					</fieldset>
+				</form>
+
+
+			</div> <!-- end s-content__main -->
+
+		</div> <!-- end row -->
+
+	</section> <!-- s-content -->
+
+{% endblock %}
