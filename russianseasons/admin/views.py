@@ -9,6 +9,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.http import Http404
 from russianseasons.admin.forms import *
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
 
 
 sizes = ['s', 'm', 'l', 'xl']
