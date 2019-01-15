@@ -5,8 +5,8 @@ from russianseasons.views import shop, blog, contacts, views
 
 urlpatterns = [
     path('admin/', include('russianseasons.admin.urls')),
-    path('', views.home_page, name='home_url'),
-    path('art', views.art_page, name='art_url'),
+	path('', views.art_page, name='art_url'),
+    path('', views.art_page, name='home_url'),
     path('shop', shop.shop_page, name='shop_url'),
     path('shop/item/<int:id>', shop.ItemView.as_view(), name='item_url'),
     path('contacts', contacts.ContactsView.as_view(), name='contacts_url'),

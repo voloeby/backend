@@ -34,7 +34,7 @@
 	<link rel="apple-touch-icon" href="{% static 'images/favicon/favicon152.png' %}" sizes="152x152">
 	<link rel="apple-touch-icon" href="{% static 'images/favicon/favicon167.png' %}" sizes="167x167">
 	<link rel="icon" href="{% static 'images/favicon/favicon.ico' %}" type="image/x-icon">
-	  <link rel="shortcut icon" href="{% static 'images/favicon/favicon.ico' %}" type="image/x-icon">
+	<link rel="shortcut icon" href="{% static 'images/favicon/favicon.ico' %}" type="image/x-icon">
 	<style>
 		@font-face {
 		font-family: "Euro-Caps";
@@ -50,7 +50,7 @@
 	{% include "local_meta.html" %}
 </head>
 <body id="top" style="min-width:320px">
-	<section class="s-pageheader {% if request.path == home_url %}s-pageheader--home{% endif %}">
+	<section class="s-pageheader {% if request.path == home_url and False %}s-pageheader--home{% endif %}">
 		<header class="header">
 			<div class="header__content row">
 				<div class="header__logo">
@@ -86,7 +86,7 @@
 			</div>
 		</header>
 
-		{% if request.path == home_url %}
+		{% if request.path == home_url and False %}
 			<div class="pageheader-content row">
 				<div class="col-full">
 					<div class="featured">
