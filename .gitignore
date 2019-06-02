@@ -1,5 +1,6 @@
 .DS_Store
 db.sqlite3
+__pycache__
 voloeby/local.py
 media
 russianseasons/static2
