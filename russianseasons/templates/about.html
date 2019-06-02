@@ -6,15 +6,12 @@
 {% block keywords %}{{storage.meta_about_keywords}}{% endblock %}
 
 {% block head %}
-	<meta name="og:title" content="О нас (а с тобой все ясно)">
+	<meta name="og:title" content="О нас">
 	<meta name="og:url" content="https://voloeby.com{{request.path}}">
 	<meta name="og:type" content="article">
 	<meta name="og:locale" content="ru_RU">
 	<meta name="og:description" content="{{storage.meta_about_description}}">
 
-	<meta name="og:image" content="https://voloeby.com{% static 'images/round_logo.png' %}">
-	<meta name="og:image:width" content="2480">
-	<meta name="og:image:height" content="2480">
 
 	<meta name="og:image" content="https://voloeby.com{% static 'images/round_logo_1400x600.png' %}">
 	<meta name="og:image:width" content="1400">
@@ -22,9 +19,14 @@
 	<meta name="og:image" content="https://voloeby.com{% static 'images/round_logo_2800x1200.png' %}">
 	<meta name="og:image:width" content="2800">
 	<meta name="og:image:height" content="1200">
+
 	<meta name="og:image" content="https://voloeby.com{% static 'images/round_logo.png' %}">
-	<meta name="og:image:width" content="500">
-	<meta name="og:image:height" content="500">
+	<meta name="og:image:width" content="2480">
+	<meta name="og:image:height" content="2480">
+
+	<meta itemprop="name" content="О нас">
+	<meta itemprop="description" content="{{storage.meta_contacts_description}}">
+	<meta itemprop="image" content="https://voloeby.com{% static 'images/round_logo.png' %}">
 {% endblock %}
 
 {% block content %}
