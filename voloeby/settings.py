@@ -53,11 +53,15 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'russianseasons.middleware.admin.CheckUserActivityMiddleware',
-	'htmlmin.middleware.HtmlMinifyMiddleware',
-    'htmlmin.middleware.MarkRequestMiddleware',
+	# 'htmlmin.middleware.HtmlMinifyMiddleware',
+    # 'htmlmin.middleware.MarkRequestMiddleware',
     # 'oscar.apps.basket.middleware.BasketMiddleware',
     # 'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 ]
+
+if not DEBUG:
+	MIDDLEWARE.append('htmlmin.middleware.HtmlMinifyMiddleware')
+	MIDDLEWARE.append('htmlmin.middleware.MarkRequestMiddleware')
 
 ROOT_URLCONF = 'voloeby.urls'
 
