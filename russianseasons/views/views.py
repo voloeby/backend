@@ -1,14 +1,15 @@
 from django.shortcuts import render
 from django.views import View
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from russianseasons.models import *
+from django.urls import reverse
 
 
 def home_page(request):
-    context = {}
-    template_name = 'home.html'
-    context['posts'] = MainPagePost.objects.all()
-    return render(request, template_name, context)
+    # context = {}
+    # template_name = 'home.html'
+    # context['posts'] = MainPagePost.objects.all()
+    return HttpResponseRedirect(reverse('shop_url'))
 
 
 def art_page(request):

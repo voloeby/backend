@@ -1,0 +1,29 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+	<div class="container">
+		<h1>Всякое</h1>
+		<a href="{% url 'new_another_url' %}">
+			<button class="btn btn-primary">Добавить</button>
+		</a>
+		<ul class="list-group list-group-flush mt-2">
+			{% for item in storage %}
+				 <li class="list-group-item">
+					 <div class="row">
+					 	<div class="col-3">
+					 		{{item.key}}
+					 	</div>
+						<div class="col">
+					 		{{item.value}}
+					 	</div>
+						<div class="col-1">
+							<a href="{% url 'edit_another_url' item.id %}">
+								<button class="btn btn-success">Изменить</button>
+							</a>
+						</div>
+					 </div>
+				 </li>
+			{% endfor %}
+		</ul>
+	</div>
+{% endblock %}

@@ -2,12 +2,12 @@
 {% load thumbnail %}
 
 
-{% block title %}Творчество{% endblock %}
+{% block title %}Русские Сезоны{% endblock %}
 {% block description %}{{storage.meta_art_description}}{% endblock %}
 {% block keywords %}{{storage.meta_art_keywords}}{% endblock %}
 
 {% block head %}
-	<meta name="og:title" content="Творчество">
+	<meta name="og:title" content="Русские Сезоны">
 	<meta name="og:url" content="https://voloeby.com{{request.path}}">
 	<meta name="og:type" content="article">
 	<meta name="og:locale" content="ru_RU">
@@ -31,15 +31,15 @@
 	<section class="s-content">
 		<div class="row narrow">
 			<div class="col-full s-content__header" data-aos="fade-up">
-				<h1 class="my-font">Творчество</h1>
+				<h1 class="my-font">Русские Сезоны</h1>
 			</div>
 		</div>
 		<div class="row masonry-wrap" style="margin-top:10px" data-aos="fade-up">
-			<aside class="pull-quote">
+			<!--<aside class="pull-quote">
 				<blockquote class="block_center" style="text-align: center;">
 					<p>Если искусство нужно объяснять, то это говно, а не искусство</p>
 				</blockquote>
-			</aside>
+			</aside>-->
 			<div class="masonry">
 				<div class="grid-sizer"></div>
 				{% for item in photos %}

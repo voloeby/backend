@@ -1,0 +1,62 @@
+{% extends 'admin/base.html' %}
+
+
+
+{% block content %}
+	<div class="container">
+		<h1 id='{{item.id}}'>{{header}}</h1>
+		<form class="" action="{{request.path}}" method="post" enctype="multipart/form-data">
+			{% csrf_token %}
+			{{form.as_p}}
+			{% url 'edit_item_url' item.id as edit_url %}
+			{% if request.path == edit_url %}
+				<div class="row" id='images' number="{{item.images.count}}">
+					<div class="col-2 mt-2" id='none-image' style="display:none">
+						<div class="">
+							<img class="mw-100">
+						</div>
+						<a href="javascript:del_image({{image.id}})">
+							<button class=" mt-2 btn btn-danger container-fluid" type="button">del</button>
+						</a>
+					</div>
+					{% for image in item.images.all %}
+						<div class="col-2 mt-2" id='{{image.id}}'>
+							<div class="">
+<!--
+								<i class="fas fa-times-circle fa-2x" style="position:relative;left:90%;top:20px;color:red"></i>
+-->
+								<img src="{{image.file.url}}" class="mw-100">
+
+							</div>
+							<a href="javascript:del_image({{image.id}})">
+								<button class=" mt-2 btn btn-danger container-fluid" type="button">del</button>
+							</a>
+						</div>
+					{% endfor %}
+					<div class="col-2 mt-2" id="add_but">
+						{% load static %}
+						<a href="javascript:new_item_image({{item.id}})">
+							<div class="plus-button">
+								<img src="{% static 'images/icons/png/plus.png' %}" class="mw-100" style="display:block;margin:auto">
+							</div>
+
+						</a>
+						<input type="file" id="image_upload" style="display:none">
+					</div>
+				</div>
+			{% endif %}
+			<div class="container mt-4">
+				<div class="row ">
+					<div class="col-2 pl-0">
+						<input type="submit" value="Сохранить" class="btn btn-success container-fluid">
+					</div>
+					<div class="col-2">
+						<a href="{% url 'admin_shop_url' %}">
+							<div class="btn btn-danger container-fluid">Отменить</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+{% endblock %}

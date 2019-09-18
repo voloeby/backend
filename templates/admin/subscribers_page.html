@@ -1,0 +1,31 @@
+{% extends 'admin/base.html' %}
+
+
+
+{% block content %}
+	<div class="container">
+		<h1>Подписчики</h1>
+		<a href="#">
+			<button class="btn btn-primary">Отправить всем сообщение (пока не работает)</button>
+		</a>
+		<ul class="list-group list-group-flush mt-2">
+			<li class="list-group-item" style="background-color:#efefef">
+				<div class="row">
+					<div class="col">
+						<small>Email</small>
+					</div>
+				</div>
+			</li>
+			{% for subscriber in subscribers %}
+				<li class="list-group-item" id="{{item.id}}">
+					<div class="row">
+						<div class="col">
+							{{subscriber.email}}
+						</div>
+					</div>
+				</li>
+			{% endfor %}
+		</ul>
+
+	</div>
+{% endblock %}
