@@ -6,7 +6,7 @@ from django.conf import settings
 urlpatterns = [
     # path('', include('alfa.urls')),
     # path('i18n/', include('django.conf.urls.i18n')),
-    # path('djadmin/', admin.site.urls),
+    path('djadmin/', admin.site.urls),
 	# path('admin/', include('admin.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('', include('russianseasons.urls')),
