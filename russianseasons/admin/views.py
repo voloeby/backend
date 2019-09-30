@@ -2,12 +2,13 @@ import json
 from django.shortcuts import render
 from django.urls import reverse
 from django.views import View
-from russianseasons.forms import *
+from russianseasons.forms.forms import *
 from russianseasons.models import *
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse
 from django.http import Http404
 from russianseasons.admin.forms import *
+
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 
