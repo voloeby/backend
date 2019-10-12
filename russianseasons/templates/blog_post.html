@@ -14,7 +14,7 @@
 					{{post.title}}
 				</h1>
 				<ul class="s-content__header-meta">
-					<li class="date">{{post.datetime|date:'d.m.Y'}}</li>
+					<li class="date">{{post.datetime|date:'d.m.Y'}} {% if post.user %}by {{post.user.username}}{% endif %}</li>
 				</ul>
 			</div> <!-- end s-content__header -->
 
