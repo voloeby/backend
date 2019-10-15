@@ -163,15 +163,17 @@ class FinanceForm(forms.ModelForm):
 class CategoryForm(forms.ModelForm):
     class Meta:
         model = Category
-        fields = ['name', 'price', 'description']
+        fields = ['name', 'price', 'sale_price', 'description']
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control', 'required': ''}),
             'price': forms.NumberInput(attrs={'class': 'form-control', }),
+            'sale_price': forms.NumberInput(attrs={'class': 'form-control', }),
             'description': forms.Textarea(attrs={'class': 'form-control', 'rows': '7', }),
 
         }
         labels = {
             'name': 'Название:',
             'price': 'Цена:',
+            'sale_price': 'Скидочная цена:',
             'description': 'Описание:',
         }
