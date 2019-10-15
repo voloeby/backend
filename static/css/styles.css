@@ -129,6 +129,7 @@ h1{
 }
 
 .strikeout {
+	text-decoration: line-through;
   line-height: 1em;
   position: relative;
 }
