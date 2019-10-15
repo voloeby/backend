@@ -6,4 +6,4 @@ class Category(models.Model):
     price = models.IntegerField(null=True, blank=True, default=None)
 
     def __str__(self):
-        return self.name
+        return self.name + ' ' + str(self.price)

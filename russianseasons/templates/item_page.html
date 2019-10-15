@@ -47,7 +47,7 @@
 				{% if item.main_image %}
 					<img src="{{item.main_image.file.url}}" class="block_center" style="display:block;margin:auto" id="main_image" alt="{{item.name}}" title="{{item.name}}">
 				{% else %}
-					<img src="{% static 'images/favicon/favicon228.png' %}" class="block_center" alt="{{item.name}}">
+					<img src="{% static 'images/favicon/favicon.png' %}" class="block_center" alt="{{item.name}}">
 				{% endif %}
 				{% for image in item.small_images.all %}
 					<a href="javascript:to_main_image({{image.id}})">
