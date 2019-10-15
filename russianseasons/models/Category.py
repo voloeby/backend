@@ -7,4 +7,4 @@ class Category(models.Model):
     sale_price = models.IntegerField(null=True, blank=True, default=None)
 
     def __str__(self):
-        return self.name + ' ' + str(self.price)
+        return self.name + ' ' + str(self.price) + '(' + str(self.sale_price) + ')'
