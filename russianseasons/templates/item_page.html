@@ -83,7 +83,7 @@
 			<p>{{item.category.description|safe}}</p>
 		</div>
 		<div class="col-full">
-			Цена: <b class="h4">{{item.category.price}}</b> руб.
+			Цена: <b class="h4">{% if item.category.sale_price %}{{item.category.sale_price}}{% else %}{{item.category.price}}{% endif %}</b> руб.
 		</div>
 		<div class="col-full mt-24">
 			<div>
