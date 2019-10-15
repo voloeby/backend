@@ -22,6 +22,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.flatpages',
+	'snowpenguin.django.recaptcha3',
+	# 'captcha',
 	# 'alfa',
 	# 'admin',
 	# 'models',
@@ -214,3 +216,5 @@ CKEDITOR_CONFIGS = {
         'height': '1024',
     },
 }
+
+SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']

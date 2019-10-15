@@ -27,7 +27,7 @@
 						<div class="entry__text">
 							<div class="entry__header">
 								<div class="entry__date">
-									<a href="single-standard.html">{{post.datetime|date:'d.m.Y'}}</a>
+									<a>{{post.datetime|date:'d.m.Y'}} {% if post.user %}by {{post.user.username}}{% endif %}</a>
 								</div>
 								<h1 class="entry__title"><a href="{% url 'blog_post_url' post.id %}">{{post.title}}</a></h1>
 							</div>

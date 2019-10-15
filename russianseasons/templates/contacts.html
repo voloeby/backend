@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
 {% load thumbnail %}
 {% load static %}
+{% load recaptcha3 %}
 
 {% block title %}Контакты{% endblock %}
 {% block description %}{{storage.meta_contacts_description}}{% endblock %}
 {% block keywords %}{{storage.meta_contacts_keywords}}{% endblock %}
 
 {% block head %}
+	{% recaptcha_init %}
+	{% recaptcha_ready action_name='homepage' %}
 	<meta name="og:title" content="Контакты">
 	<meta name="og:url" content="https://voloeby.com{{request.path}}">
 	<meta name="og:type" content="article">
@@ -93,19 +96,19 @@
 					<fieldset>
 
 						<div class="form-field">
-							<input name="cName" type="text" id="cName" class="full-width" placeholder="Ваше имя" value="" required>
+							<input name="name" type="text" id="cName" class="full-width" placeholder="Ваше имя" value="" required>
 						</div>
 
 						<div class="form-field">
-							<input name="cEmail" type="text" id="cEmail" class="full-width" placeholder="Email" value="" required>
+							<input name="email" type="text" id="cEmail" class="full-width" placeholder="Email" value="" required>
 						</div>
 
 						<div class="message form-field">
-						<textarea name="cMessage" id="cMessage" class="full-width" placeholder="Сообщение" required></textarea>
+						<textarea name="text" id="cMessage" class="full-width" placeholder="Сообщение" required></textarea>
 						</div>
 
 						<button type="submit" class="submit btn btn--primary full-width">Отправить</button>
-
+						{{form.captcha}}
 					</fieldset>
 				</form>
 
