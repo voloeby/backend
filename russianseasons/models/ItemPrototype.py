@@ -18,6 +18,7 @@ class ItemPrototype(models.Model):
     colors = models.ManyToManyField(Color, blank=True, default=None)
     price = models.IntegerField(null=True)
     show = models.BooleanField(default=False)
+    in_stock = models.BooleanField(default=True)
     number = models.IntegerField(default=0)
 
     class Meta:

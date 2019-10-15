@@ -80,7 +80,11 @@
 												</a>
 											</span>
 										{% endif %}
-										р.
+										{% if not item.in_stock %}
+											<div class="red_text">
+												Нет в наличии
+											</div>
+										{% endif %}
 									</div>
 								</div>
 						</article>

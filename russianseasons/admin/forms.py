@@ -60,7 +60,7 @@ class EditItemForm(forms.ModelForm):
 
     class Meta:
         model = ItemPrototype
-        fields = ['name', 'category', 'description', 'colors', 'sizes']
+        fields = ['name', 'category', 'description', 'colors', 'sizes', 'in_stock']
         widgets = {
             'name': forms.widgets.TextInput(attrs={'class': 'form-control'}),
             # 'sub_name': forms.widgets.TextInput(attrs={'class': 'form-control'}),
@@ -68,11 +68,13 @@ class EditItemForm(forms.ModelForm):
             # 'price': forms.widgets.NumberInput(attrs={'class': 'form-control',}),
             'category': forms.widgets.Select(attrs={'class': 'form-control', }),
             # 'colors': forms.widgets.CheckboxInput(attrs={'class': 'form-control',}),
+            'in_stock': forms.widgets.CheckboxInput(attrs={'class': ''}),
 
         }
         labels = {
             'name': 'Название:',
             'category': 'Категория:',
+            'in_stock': 'В наличии:',
             # 'sub_name': 'Название кратко',
             'description': 'Описание:',
             'colors': 'Цвета:',

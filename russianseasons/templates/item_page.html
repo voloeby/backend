@@ -85,6 +85,7 @@
 		<div class="col-full">
 			Цена: <b class="h4">{% if item.category.sale_price %}{{item.category.sale_price}}{% else %}{{item.category.price}}{% endif %}</b> руб.
 		</div>
+		{% if item.in_stock %}
 		<div class="col-full mt-24">
 			<div>
                 <label for="sampleInput">Email</label>
@@ -105,14 +106,14 @@
 					<p id='success_message'></p>
         			<i class="fa fa-times alert-box__close"></i>
 				</div>
-
 			</div>
-
-
 			<a class="btn btn--primary full-width" href='javascript:new_pre_order()' id='button'>Оформить предзаказ</a>
-
 		</div>
-
+		{% else %}
+		<div class="col-full mb-24">
+			<span class="red_text">Нет в наличии</span>
+		</div>
+		{% endif %}
 
 	</article>
 
