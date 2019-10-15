@@ -72,13 +72,14 @@
 													{{item.category.sale_price}}
 												</a>
 											</span>
-
+											<span>p.</span>
 										{% else %}
 											<span class="entry__meta-links">
 												<a href="{% url 'item_url' item.id %}">
 													{{item.category.price}}
 												</a>
 											</span>
+											<span>p.</span>
 										{% endif %}
 										{% if not item.in_stock %}
 											<div class="red_text">
