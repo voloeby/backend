@@ -53,7 +53,23 @@
 								<a href="{% url 'item_url' item.id %}" class="entry__thumb-link">
 									{% if item.images.count > 0 %}
 										{% with item.images.all|first as image %}
-											<img src="{{ image.file.url }}" alt="{{item.name}}" title="{{item.name}}">
+											<div class="image-container">
+												<img src="{{ image.file.url }}" alt="{{item.name}}" title="{{item.name}}">
+												{% if item.category.sale_price %}
+													<p class="image-tag">
+														<span class="sale-tag">
+															Sale
+														</span>
+													</p>
+												{% endif %}
+												{% if item.is_new %}
+													<p class="image-tag">
+														<span class="new-tag">
+															New
+														</span>
+													</p>
+												{% endif %}
+											</div>
 										{% endwith %}
 									{% else %}
 										<img src="{% static 'images/favicon/favicon.png' %}" alt="{{item.name}}" title="{{item.name}}">

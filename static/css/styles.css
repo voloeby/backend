@@ -146,3 +146,35 @@ h1{
 .red_text{
 	color:red;
 }
+
+.image-container{
+	position: relative;
+}
+
+.image-tag{
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}
+
+.image-tag .sale-tag{
+	font-size: 11px;
+	background: #DD3E3E;
+	color: #fff;
+	padding: .3em .5em;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	-ms-border-radius: 2px;
+	border-radius: 2px;
+}
+
+.image-tag .new-tag{
+	font-size: 11px;
+	background: #FFC300;
+	color: #fff;
+	padding: .3em .5em;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	-ms-border-radius: 2px;
+	border-radius: 2px;
+}
