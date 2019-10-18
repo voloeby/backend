@@ -19,11 +19,15 @@
 				</li>
 				{% if request.user.is_authenticated %}
 					<li class="nav-item">
-						  <a class="nav-link text-light " href="{% url 'admin_shop_url' %}">Магазин</a>
+							<a class="nav-link text-light " href="{% url 'admin_art_url' %}">РС</a>
 					</li>
 					<li class="nav-item">
-						  <a class="nav-link text-light " href="{% url 'admin_main_page_posts_url' %}">Посты</a>
+						  <a class="nav-link text-light " href="{% url 'admin_shop_url' %}">Магазин</a>
 					</li>
+					{% comment %} <li class="nav-item">
+						  <a class="nav-link text-light " href="{% url 'admin_main_page_posts_url' %}">Посты</a>
+					</li> {% endcomment %}
+
 					<li class="nav-item">
 						  <a class="nav-link text-light " href="{% url 'admin_orders_url' %}">Заказы</a>
 					</li>
@@ -32,9 +36,6 @@
 					</li>
 					<li class="nav-item">
 						  <a class="nav-link text-light " href="{% url 'admin_another_url' %}">Всякое</a>
-					</li>
-					<li class="nav-item">
-						  <a class="nav-link text-light " href="{% url 'admin_art_url' %}">Art</a>
 					</li>
 					<li class="nav-item">
 						  <a class="nav-link text-light " href="{% url 'admin_blog_url' %}">Блог</a>
