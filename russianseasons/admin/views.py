@@ -76,7 +76,7 @@ class EditItem(BaseAdminView):
 	def delete(self, request, id):
 		obj = get_object_or_404(ItemPrototype, id=id)
 		obj.delete()
-		return HttpResponse('ok')
+		return HttpResponse('ok', content_type="application/json")
 
 	def patch(self, request, id):
 		obj = get_object_or_404(ItemPrototype, id=id)
@@ -87,35 +87,35 @@ class EditItem(BaseAdminView):
 		elif request.GET.get('type', None) == 'move_up':
 			number = obj.number
 			if number == 1:
-				return HttpResponse('no_change')
+				return HttpResponse('no_change', content_type="application/json")
 			try:
 				prev = ItemPrototype.objects.get(number=number - 1)
 				prev.number = number
 				prev.save()
 				obj.number = number - 1
 				obj.save()
-				return HttpResponse('ok')
+				return HttpResponse('ok', content_type="application/json")
 			except ItemPrototype.DoesNotExist:
 				obj.number = number - 1
 				obj.save()
-				return HttpResponse('no_change')
+				return HttpResponse('no_change', content_type="application/json")
 		elif request.GET.get('type', None) == 'move_down':
 			number = obj.number
 			if number == ItemPrototype.objects.count():
-				return HttpResponse('no_change')
+				return HttpResponse('no_change', content_type="application/json")
 			try:
 				next = ItemPrototype.objects.get(number=number + 1)
 				next.number = number
 				next.save()
 				obj.number = number + 1
 				obj.save()
-				return HttpResponse('ok')
+				return HttpResponse('ok', content_type="application/json")
 			except ItemPrototype.DoesNotExist:
 				obj.number = number + 1
 				obj.save()
 				print(obj.number)
-				return HttpResponse('no_change')
-		return HttpResponse('ok')
+				return HttpResponse('no_change', content_type="application/json")
+		return HttpResponse('ok', content_type="application/json")
 
 
 class DelItem(BaseAdminView):
@@ -303,7 +303,7 @@ class NewBlogPostView(BaseAdminView):
 	def delete(self, request, id):
 		obj = get_object_or_404(BlogPost, id=id)
 		obj.delete()
-		return HttpResponse('ok')
+		return HttpResponse('ok', content_type="application/json")
 
 
 class MessagesView(BaseAdminView):
@@ -396,7 +396,7 @@ class NewMainPagePostView(BaseAdminView):
 	def delete(self, request, id):
 		obj = get_object_or_404(MainPagePost, id=id)
 		obj.delete()
-		return HttpResponse('ok')
+		return HttpResponse('ok', content_type="application/json")
 
 
 class ArtPage(BaseAdminView):
@@ -439,7 +439,7 @@ class NewArtPage(BaseAdminView):
 	def delete(self, request, id):
 		obj = get_object_or_404(Art, id=id)
 		obj.delete()
-		return HttpResponse('ok')
+		return HttpResponse('ok', content_type="application/json")
 
 
 class ItemImage(BaseAdminView):
@@ -450,7 +450,7 @@ class ItemImage(BaseAdminView):
 			obj = form.save()
 			item.images.add(obj)
 			path = obj.file.url
-			return HttpResponse(json.dumps({'image': path, 'id': obj.id}))
+			return HttpResponse(json.dumps({'image': path, 'id': obj.id}), content_type="application/json")
 		else:
 			raise Http404
 
@@ -458,7 +458,7 @@ class ItemImage(BaseAdminView):
 		image_id = request.body.decode("utf-8").split('&')[0].split('=')[1]
 		obj = get_object_or_404(Image, id=image_id)
 		obj.delete()
-		return HttpResponse('ok')
+		return HttpResponse('ok', content_type="application/json")
 
 
 class FinancesPage(BaseAdminView):
@@ -470,9 +470,9 @@ class FinancesPage(BaseAdminView):
 			obj = form.save(commit=False)
 			obj.user = request.user
 			obj.save()
-			return HttpResponse('ok')
+			return HttpResponse('ok', content_type="application/json")
 		else:
-			return HttpResponse('bad form')
+			return HttpResponse('bad form', content_type="application/json")
 
 	def get(self, request):
 		context = {}
@@ -488,10 +488,10 @@ class FinancesPage(BaseAdminView):
 				FinanceItem.objects.get(id=request.body.decode(
 					"utf-8").split('&')[0].split('=')[1]).delete()
 			except FinanceItem.DoesNotExist:
-				return HttpResponse('not_deleted')
+				return HttpResponse('not_deleted', content_type="application/json")
 		except Exception as e:
-			return HttpResponse(e)
-		return HttpResponse('ok')
+			return HttpResponse(e, content_type="application/json")
+		return HttpResponse('ok', content_type="application/json")
 
 
 class AdminPage(BaseAdminView):
@@ -509,7 +509,7 @@ class AdminPage(BaseAdminView):
 class UsersPage(BaseAdminView):
 	def patch(self, request):
 		print(request.POST)
-		return HttpResponse('ok')
+		return HttpResponse('ok', content_type="application/json")
 
 	def post(self, request):
 		if request.POST['type'] == 'is_active':
@@ -519,7 +519,7 @@ class UsersPage(BaseAdminView):
 				user.save()
 			except User.DoesNotExist:
 				raise Http404
-		return HttpResponse('ok')
+		return HttpResponse('ok', content_type="application/json")
 
 
 class NewCategoryPage(BaseAdminView):
