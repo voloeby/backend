@@ -45,10 +45,10 @@ $(()=>{
 			return;
 		}
 		var fd = new FormData();
-		console.log($("#image_upload")[0].files[0]);
+		// console.log($("#image_upload")[0].files[0]);
 		fd.append('file', $("#image_upload")[0].files[0]); // console.log(inp.val());
 		// 'csrfmiddlewaretoken':csrf
-		console.log(csrf);
+		// console.log(csrf);
 		fd.append('csrfmiddlewaretoken', csrf);
 		$.ajax({
 			url: '/admin/shop/item/' + id + '/item_image',
@@ -56,6 +56,7 @@ $(()=>{
 			method: 'post',
 			data: fd,
 			success: function (res) {
+				console.log(res);
 				var image_url = JSON.parse(res).image;
 				var image_id = JSON.parse(res).id;
 				var div = $('#none-image').clone().attr('id', image_id);
