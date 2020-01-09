@@ -92,7 +92,9 @@ function del_image(image_id){
 		method: 'delete',
 		data: {image_id: image_id, csrfmiddlewaretoken: csrf},
 		success: function(res){
-			$('#'+image_id).remove()
+			console.log(res);
+			console.log($('#'+image_id));
+			$('#'+image_id).remove();
 		}
 	})
 }
