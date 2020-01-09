@@ -57,8 +57,8 @@ $(()=>{
 			data: fd,
 			success: function (res) {
 				console.log(res);
-				var image_url = JSON.parse(res).image;
-				var image_id = JSON.parse(res).id;
+				var image_url = res.image;
+				var image_id = res.id;
 				var div = $('#none-image').clone().attr('id', image_id);
 				div.css('display', 'block');
 				console.log(div);
