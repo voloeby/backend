@@ -5,7 +5,7 @@ from django.http import Http404
 
 class CheckUserActivityMiddleware(MiddlewareMixin):
     def process_request(self, request):
-        if request.path == '/admin/login':
+        if request.path == '/admin/login' or request.path == '/admin/tglogin':
             return None
         if request.path.startswith('/admin/'):
             if request.user:

@@ -61,9 +61,11 @@ $(()=>{
 				var image_id = res.id;
 				var div = $('#none-image').clone().attr('id', image_id);
 				div.css('display', 'block');
+				console.log('1');
 				console.log(div);
 				div.find('img').attr('src', image_url);
 				div.find('a').attr('href', 'javascript:del_image('+image_id+')');
+				console.log('2');
 				console.log(div);
 				$('#images').append(div);
 				$('#images').append($('#add_but'));

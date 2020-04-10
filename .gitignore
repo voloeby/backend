@@ -1,4 +1,6 @@
 .DS_Store
+venv/
+ngrok
 db.sqlite3
 __pycache__
 voloeby/local.py
