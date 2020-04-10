@@ -1,4 +1,4 @@
-import json
+import json, hashlib, hmac, collections
 from django.shortcuts import render
 from django.urls import reverse
 from django.views import View
@@ -11,6 +11,12 @@ from russianseasons.admin.forms import *
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+from voloeby.settings import TG_BOT_TOKEN
+from django_telegram_login.authentication import verify_telegram_authentication
+from django_telegram_login.errors import (
+	NotTelegramDataError,
+	TelegramDataIsOutdatedError,
+)
 
 
 sizes = ['s', 'm', 'l', 'xl']
@@ -157,6 +163,40 @@ class LoginPage(View):
 			context['error_message'] = 'Неверно заполнена форма.' + str(form.errors)
 			return render(request, self.template_name, self.context)
 
+class TgLogin(View):
+	template_name = 'admin/login_page.html'
+	context = {'login_form': LoginForm()}
+
+	def get(self, request):
+		if request.GET['username'] not in ['hectopka', 'phunkault', 'vanchilla']:
+			return HttpResponseRedirect(reverse('home_url'))
+		if not request.GET.get('hash'):
+			return HttpResponseRedirect(reverse('home_url'))
+
+		try:
+			result = verify_telegram_authentication(
+				 bot_token=TG_BOT_TOKEN, request_data=request.GET
+			)
+
+		except TelegramDataIsOutdatedError:
+			return HttpResponseRedirect(reverse('home_url'))
+
+		except NotTelegramDataError:
+			return HttpResponseRedirect(reverse('home_url'))
+
+		user = None
+		try:
+			user = User.objects.get(username=result['id'])
+		except Exception as e:
+			user = User.objects.create_user(username=result["id"])
+			user.first_name = result['first_name']
+			user.last_name = result['last_name']
+			user.save()
+		if user != None:
+			login(request, user)
+			return HttpResponseRedirect(reverse('admin_shop_url'))
+		else:
+			return HttpResponseRedirect(reverse('home_url'))
 
 class SignInPage(View):
 	template_name = 'admin/signin_page.html'

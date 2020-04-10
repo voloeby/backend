@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'easy_thumbnails',
     'image_cropping',
 	'htmlmin',
+	'django_telegram_login'
 ]  # + get_core_apps()
 
 SITE_ID = 1
