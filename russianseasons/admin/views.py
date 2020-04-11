@@ -171,6 +171,8 @@ class TgLogin(View):
 		if request.GET['username'] not in ['hectopka', 'phunkault', 'vanchilla']:
 			return HttpResponseRedirect(reverse('home_url'))
 		if not request.GET.get('hash'):
+			# print("no hash")
+			# return HttpResponse("not ok")
 			return HttpResponseRedirect(reverse('home_url'))
 
 		try:
@@ -179,9 +181,13 @@ class TgLogin(View):
 			)
 
 		except TelegramDataIsOutdatedError:
+			# print(TelegramDataIsOutdatedError)
+			# return HttpResponse("not ok")
 			return HttpResponseRedirect(reverse('home_url'))
 
 		except NotTelegramDataError:
+			# print(NotTelegramDataError)
+			# return HttpResponse("not ok")
 			return HttpResponseRedirect(reverse('home_url'))
 
 		user = None
